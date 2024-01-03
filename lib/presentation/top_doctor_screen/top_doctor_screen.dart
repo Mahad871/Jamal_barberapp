@@ -44,7 +44,8 @@ class TopDoctorScreen extends StatelessWidget {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleTwo(text: "lbl_top_barbers".tr),
+        title: AppbarSubtitleTwo(
+            text: AppLocalizations.of(context)!.lbl_top_barbers),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgOverflowMenu,

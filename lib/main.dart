@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/app_export.dart';
 import 'package:mahad_s_application3/theme/theme_helper.dart';
 import 'package:mahad_s_application3/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:mahad_s_application3/dependencyInjection/injection_container.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,12 +38,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // precacheImage(AssetImage(ImageConstant.appLogo), context);
     return MaterialApp(
+      locale: Locale('en'),
       theme: theme,
-      title: 'mahad_s_application3',
+      title: 'Jamal',
       debugShowCheckedModeBanner: false,
       navigatorKey: NavigatorService.navigatorKey,
       localizationsDelegates: [
-        AppLocalizationDelegate(),
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -49,6 +52,10 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         Locale(
           'en',
+          '',
+        ),
+        Locale(
+          'ar',
           '',
         ),
       ],

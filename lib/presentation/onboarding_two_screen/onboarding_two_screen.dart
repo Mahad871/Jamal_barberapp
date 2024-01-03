@@ -54,7 +54,8 @@ class OnboardingTwoScreen extends StatelessWidget {
                   Container(
                       width: 230.h,
                       margin: EdgeInsets.only(left: 2.h, right: 58.h),
-                      child: Text("msg_find_a_lot_of_specialist".tr,
+                      child: Text(
+                          AppLocalizations.of(context)!.onBoarding_two_txt,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.titleLarge!
@@ -85,12 +86,13 @@ class OnboardingTwoScreen extends StatelessWidget {
                             child: Padding(
                                 padding:
                                     EdgeInsets.only(top: 20.v, bottom: 18.v),
-                                child: Text("lbl_skip".tr,
+                                child: Text(
+                                    AppLocalizations.of(context)!.lbl_skip,
                                     style:
                                         CustomTextStyles.titleSmallPrimary))),
                         CustomElevatedButton(
                             width: 145.h,
-                            text: "lbl_next".tr,
+                            text: AppLocalizations.of(context)!.lbl_next,
                             onPressed: () {
                               Navigator.pushReplacementNamed(
                                   context, AppRoutes.onboardingThreeScreen);

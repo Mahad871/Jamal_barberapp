@@ -62,7 +62,7 @@ class ScheduleTabContainerPageState extends State<ScheduleTabContainerPage>
     return CustomAppBar(
       height: 47.v,
       title: AppbarTitle(
-        text: "lbl_schedule".tr,
+        text: AppLocalizations.of(context)!.lbl_schedule,
         margin: EdgeInsets.only(left: 21.h),
       ),
       actions: [
@@ -132,17 +132,17 @@ class ScheduleTabContainerPageState extends State<ScheduleTabContainerPage>
         tabs: [
           Tab(
             child: Text(
-              "lbl_upcoming".tr,
+              AppLocalizations.of(context)!.lbl_upcoming,
             ),
           ),
           Tab(
             child: Text(
-              "lbl_completed".tr,
+              AppLocalizations.of(context)!.lbl_completed,
             ),
           ),
           Tab(
             child: Text(
-              "lbl_canceled".tr,
+              AppLocalizations.of(context)!.lbl_canceled,
             ),
           ),
         ],

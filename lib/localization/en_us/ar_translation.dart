@@ -1,39 +1,38 @@
-final Map<String, String> enUs = {
+final Map<String, String> ar = {
   // Onboarding One Screen
-  "onBoarding_one_txt": "Connect with the Barber you love",
+  "msg_consult_only_with": "Connect with the Barber you love",
 
   // Onboarding Two Screen
-  "onBoarding_two_txt": "Find best hair specialists in one place",
+  "msg_find_a_lot_of_specialist": "Find best hair specialists in one place",
 
   // Onboarding Three Screen
-  "get_started": "Get Started",
-  "onBoarding_three_txt": "Book an appointment with our Barber",
+  "lbl_get_started": "Get Started",
+  "msg_get_connect_our": "Book an appointment with our Barber",
 
   // Onboarding Four Screen
-  "lets_get_started": "Let’s get started!",
-  "login_to_enjoy_the":
+  "msg_let_s_get_started": "Let’s get started!",
+  "msg_login_to_enjoy_the":
       "Login to enjoy the features we’ve provided, and stay healthy!",
 
   // Login Screen
   "lbl_or": "OR",
-  "don_t_have_an_account": "Don’t have an account?",
-  "forgot_password": "Forgot Password?",
-  "sign_in_with_apple": "Sign in with Apple",
-  "sign_in_with_facebook": "Sign in with Facebook",
-  "sign_in_with_google": "Sign in with Google",
-  "sign_up_with_google": "Sign up with Google",
+  "msg_don_t_have_an_account": "Don’t have an account?",
+  "msg_forgot_password": "Forgot Password?",
+  "msg_sign_in_with_apple": "Sign in with Apple",
+  "msg_sign_in_with_facebook": "Sign in with Facebook",
+  "msg_sign_in_with_google": "Sign in with Google",
+  "msg_sign_up_with_google": "Sign up with Google",
 
   // Sign Up Screen
   "lbl_enter_your_name": "Enter your name",
   "lbl_log_in2": "Log In",
-  "already_have_an": "Already have an account?",
-  "i_agree_to_the_medidoc":
+  "msg_already_have_an": "Already have an account?",
+  "msg_i_agree_to_the_medidoc":
       "I agree to the medidoc Terms of Service \nand Privacy Policy",
 
   // Sign Up_Success Screen
-  "lbl_go_to_home": "Go to Home", 
-  "lbl_success": "Success",
-  "your_account_has": "Your account has been \nsuccessfully registered",
+  "lbl_go_to_home": "Go to Home", "lbl_success": "Success",
+  "msg_your_account_has": "Your account has been \nsuccessfully registered",
 
   // Reset Password_Email Screen
   "lbl_xyz_gmail_com": "xyz@gmail.com",
@@ -41,9 +40,9 @@ final Map<String, String> enUs = {
   // Reset Password_Tab Container Screen
   "lbl_email": "Email",
   "lbl_phone": "Phone",
-  "enter_your_email_or_your_phone_number_we_will_send_you_confirmation_code":
+  "msg_enter_your_email2":
       "Enter your email or your phone number, we will send you confirmation code",
-  "forgot_your_password?": "Forgot Your Password?",
+  "msg_forgot_your_password": "Forgot Your Password?",
 
   // Reset Password_Phone Screen
   "lbl_1234567890": "1234567890",
@@ -52,28 +51,29 @@ final Map<String, String> enUs = {
   "lbl_08528188": "08528188*** ",
   "lbl_resend": "Resend",
   "lbl_verify": "Verify",
-  "didn_t_receive_the": "Didn’t receive the code?",
-  "enter_code_that": "Enter code that we have sent to your number 08528188*** ",
-  "enter_code_that2": "Enter code that we have sent to your number ",
-  "enter_verification": "Enter Verification Code",
+  "msg_didn_t_receive_the": "Didn’t receive the code?",
+  "msg_enter_code_that":
+      "Enter code that we have sent to your number 08528188*** ",
+  "msg_enter_code_that2": "Enter code that we have sent to your number ",
+  "msg_enter_verification": "Enter Verification Code",
 
   // Create New Password Screen
   "lbl_create_password": "Create Password",
-  "confirm_password": "Confirm password",
-  "create_new_password": "Create New Password",
-  "create_your_new": "Create your new password to login",
-  "enter_new_password": "Enter new password",
+  "msg_confirm_password": "Confirm password",
+  "msg_create_new_password": "Create New Password",
+  "msg_create_your_new": "Create your new password to login",
+  "msg_enter_new_password": "Enter new password",
 
   // Home Screen
   "lbl_barber": "Barber",
   "lbl_hospital": "Hospital",
   "lbl_book_now": "Book Now",
-  "early_protection": "Style for Everyone",
-  "find_your_desire": "Find your desire \nhealth solution",
-  "search_barber_shops": "Search barber, BarberShops...",
+  "msg_early_protection": "Style for Everyone",
+  "msg_find_your_desire": "Find your desire \nhealth solution",
+  "msg_search_barber_shops": "Search barber, BarberShops...",
 
   // Top barber Screen
-  "dr_marcus_horizon2": "Marcus Horizon D",
+  "msg_dr_marcus_horizon2": "Marcus Horizon D",
 
   // Find barbers Screen
   "lbl_cardio": "Cardio",
@@ -88,8 +88,8 @@ final Map<String, String> enUs = {
   "lbl_general": "General",
   "lbl_lungs": "Lungs",
   "lbl_surgeon": "Surgeon",
-  "recommended_doctors": "Recommended barbers",
-  "your_recent_doctors": "Your Recent barbers",
+  "msg_recommended_doctors": "Recommended barbers",
+  "msg_your_recent_doctors": "Your Recent barbers",
 
   // barber Detail Screen
   "lbl_01_00_pm": "01:00 PM",
@@ -115,7 +115,7 @@ final Map<String, String> enUs = {
   "lbl_thu": "Thu",
   "lbl_tue": "Tue",
   "lbl_wed": "Wed",
-  "lorem_ipsum_dolor":
+  "msg_lorem_ipsum_dolor":
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam... ",
 
   // Booking barber Screen
@@ -130,21 +130,21 @@ final Map<String, String> enUs = {
   "lbl_consultation": "Consultation",
   "lbl_date": "Date",
   "lbl_reason": "Reason",
-  "aditional_discount": "Aditional Discount",
-  "wednesday_jun_23": "Wednesday, Jun 23, 2021 | 10:00 AM",
+  "msg_aditional_discount": "Aditional Discount",
+  "msg_wednesday_jun_23": "Wednesday, Jun 23, 2021 | 10:00 AM",
 
   // Chat with barber Screen
   "lbl_10_min_ago": "10 min ago",
   "lbl_5_min_ago": "5 min ago",
   "lbl_online": "Online",
   "lbl_send": "Send",
-  "consultion_start": "Consultion Start",
-  "i_don_t_have_any": "I don,t have any fever, but headchace is painful",
-  "i_have_suffering":
+  "msg_consultion_start": "Consultion Start",
+  "msg_i_don_t_have_any": "I don,t have any fever, but headchace is painful",
+  "msg_i_have_suffering":
       "I have suffering from headache and cold for 3 days, I took 2 tablets of dolo, but still pain",
-  "ok_do_you_have": "Ok, Do you have fever? is the\nheadchace severe",
-  "type_message": "Type message ...",
-  "you_can_consult": "You can consult your problem to the barber",
+  "msg_ok_do_you_have": "Ok, Do you have fever? is the\nheadchace severe",
+  "msg_type_message": "Type message ...",
+  "msg_you_can_consult": "You can consult your problem to the barber",
 
   // Schedule Screen
   "lbl_10_30_am": "10:30 AM",
@@ -164,8 +164,8 @@ final Map<String, String> enUs = {
   "lbl_08_57": "08:57",
   "lbl_09_04": "09:04",
   "lbl_10_24": "10.24",
-  "do_you_have_fever": "Do you have fever?",
-  "i_don_t_have_any2": "I don,t have any fever, but headchace...",
+  "msg_do_you_have_fever": "Do you have fever?",
+  "msg_i_don_t_have_any2": "I don,t have any fever, but headchace...",
 
   // Message History_Tab Container Screen
   "lbl_all": "All", "lbl_group": "Group", "lbl_message": "Message",
@@ -184,18 +184,19 @@ final Map<String, String> enUs = {
   "lbl_jun_12_2021": "Jun 12, 2021",
   "lbl_jun_8_2021": "Jun 8, 2021 ",
   "lbl_jun_9_2021": "Jun 9, 2021 ",
-  "beauty_tips_for":
+  "msg_beauty_tips_for":
       "Beauty Tips For Face: 10 Dos and Don'ts for Naturally Beautiful Skin",
-  "comparing_the_astrazeneca":
+  "msg_comparing_the_astrazeneca":
       "Comparing the AstraZeneca and Sinovac COVID-19 Vaccines",
-  "popular_articles": "Popular Articles",
-  "related_articles": "Related Articles",
-  "search_articles": "Search articles, news",
-  "the_25_healthiest":
+  "msg_popular_articles": "Popular Articles",
+  "msg_related_articles": "Related Articles",
+  "msg_search_articles": "Search articles, news",
+  "msg_the_25_healthiest":
       "The 25 Healthiest Fruits You Can Eat, According to a Nutritionist",
-  "the_horror_of_the": "The Horror Of The Second Wave Of COVID-19",
-  "traditional_herbal": "Traditional Herbal Medicine Treatments for COVID-19",
-  "trending_articles": "Trending Articles",
+  "msg_the_horror_of_the": "The Horror Of The Second Wave Of COVID-19",
+  "msg_traditional_herbal":
+      "Traditional Herbal Medicine Treatments for COVID-19",
+  "msg_trending_articles": "Trending Articles",
 
   // Pharmacy Screen
   "lbl_100ml": "100ml",
@@ -212,13 +213,13 @@ final Map<String, String> enUs = {
   "lbl_konidin": "Konidin",
   "lbl_popular_product": "Popular Product",
   "lbl_product_on_sale": "Product on Sale",
-  "search_drugs_category": "Search drugs, category",
+  "msg_search_drugs_category": "Search drugs, category",
 
   // Drugs Detail Screen
   "lbl_4_0": "4.0",
   "lbl_add_to_cart": "Add to Cart",
   "lbl_description": "Description",
-  "obh_combi_is_a":
+  "msg_obh_combi_is_a":
       "OBH COMBI  is a cough medicine containing, Paracetamol, Ephedrine HCl, and Chlorphenamine maleate which is used to relieve coughs accompanied by flu symptoms such as fever, headache, and sneezing... ",
 
   // My Cart Screen
@@ -232,10 +233,10 @@ final Map<String, String> enUs = {
   "lbl_taxes": "Taxes",
 
   // Location Screen
-  "1111_abcd_rd_102": "1111 abcd Rd #102 Alexandria, Virginia(VA), 22314",
-  "confirm_location": "Confirm Location",
-  "confirm_your_address": "Confirm your address",
-  "search_location": "Search location, ZIP code",
+  "msg_1111_abcd_rd_102": "1111 abcd Rd #102 Alexandria, Virginia(VA), 22314",
+  "msg_confirm_location": "Confirm Location",
+  "msg_confirm_your_address": "Confirm your address",
+  "msg_search_location": "Search location, ZIP code",
 
   // Profile Screen
   "lbl_103lbs": "103lbs",
@@ -283,13 +284,13 @@ final Map<String, String> enUs = {
   "lbl_top_barbers": "Best Barbers",
   "lbl_total": "Total",
   "lbl_visa": "VISA",
-  "dr_marcus_horizon": "Marcus Horizon",
-  "enter_your_email": "Enter your email",
-  "enter_your_password": "Enter your password",
-  "hello_how_can_i": "Hello, How can i help you?",
-  "swipe_back_to_menu": "Swipe back to menu",
+  "msg_dr_marcus_horizon": "Marcus Horizon",
+  "msg_enter_your_email": "Enter your email",
+  "msg_enter_your_password": "Enter your password",
+  "msg_hello_how_can_i": "Hello, How can i help you?",
+  "msg_swipe_back_to_menu": "Swipe back to menu",
 
 // Network Error String
-  "network_err": "Network Error",
-  "something_went_wrong": "Something Went Wrong!",
+  "msg_network_err": "Network Error",
+  "msg_something_went_wrong": "Something Went Wrong!",
 };

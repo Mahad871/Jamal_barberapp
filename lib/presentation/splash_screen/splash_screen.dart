@@ -50,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
               SizedBox(height: 15.v),
               Text(
-                "lbl_helthio".tr,
+                AppLocalizations.of(context)!.lbl_jamal,
                 style: theme.textTheme.displayMedium,
               ),
               SizedBox(height: 5.v),

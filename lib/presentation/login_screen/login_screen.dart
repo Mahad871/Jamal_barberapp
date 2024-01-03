@@ -8,6 +8,9 @@ import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
 import 'package:mahad_s_application3/widgets/custom_elevated_button.dart';
 import 'package:mahad_s_application3/widgets/custom_outlined_button.dart';
 import 'package:mahad_s_application3/widgets/custom_text_form_field.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatefulWidget {
@@ -53,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 25.v),
                   CustomTextFormField(
                     controller: emailController,
-                    hintText: "msg_enter_your_email".tr,
+                    hintText: AppLocalizations.of(context)!.enter_your_email,
                     textInputType: TextInputType.emailAddress,
                     prefix: Container(
                       margin: EdgeInsets.fromLTRB(24.h, 16.v, 16.h, 16.v),
@@ -73,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 16.v),
                   CustomTextFormField(
                     controller: passwordController,
-                    hintText: "msg_enter_your_password".tr,
+                    hintText: AppLocalizations.of(context)!.enter_your_password,
                     textInputAction: TextInputAction.done,
                     textInputType: TextInputType.visiblePassword,
                     prefix: Container(
@@ -111,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                       },
                       child: Text(
-                        "msg_forgot_password".tr,
+                        AppLocalizations.of(context)!.forgot_password,
                         style: CustomTextStyles.titleSmallPrimary,
                       ),
                     ),
@@ -119,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 32.v),
                   CustomElevatedButton(
                     isLoading: this.isloading,
-                    text: "lbl_login".tr,
+                    text: AppLocalizations.of(context)!.lbl_login,
                     onPressed: () async {
                       setState(() {
                         this.isloading = true;
@@ -181,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 1.v),
                           child: Text(
-                            "msg_don_t_have_an_account".tr,
+                            AppLocalizations.of(context)!.don_t_have_an_account,
                             style: CustomTextStyles.bodyMediumGray600,
                           ),
                         ),
@@ -195,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Padding(
                             padding: EdgeInsets.only(left: 4.h),
                             child: Text(
-                              "lbl_sign_up".tr,
+                              AppLocalizations.of(context)!.lbl_sign_up,
                               style: CustomTextStyles.titleSmallPrimary_1,
                             ),
                           ),
@@ -229,7 +232,7 @@ class _LoginScreenState extends State<LoginScreen> {
       //   },
       // ),
       centerTitle: true,
-      title: AppbarSubtitleTwo(text: "lbl_login".tr),
+      title: AppbarSubtitleTwo(text: AppLocalizations.of(context)!.login_text),
     );
   }
 
@@ -243,7 +246,8 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: EdgeInsets.only(top: 8.v, bottom: 9.v),
           child: SizedBox(width: 137.h, child: Divider()),
         ),
-        Text("lbl_or".tr, style: theme.textTheme.bodyLarge),
+        Text(AppLocalizations.of(context)!.lbl_or,
+            style: theme.textTheme.bodyLarge),
         Padding(
           padding: EdgeInsets.only(top: 8.v, bottom: 9.v),
           child: SizedBox(width: 137.h, child: Divider()),
@@ -284,7 +288,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontSize: 16.0);
             }
           },
-          text: "msg_sign_in_with_google".tr,
+          text: AppLocalizations.of(context)!.sign_in_with_google,
           leftIcon: Container(
             margin: EdgeInsets.only(right: 30.h),
             child: CustomImageView(

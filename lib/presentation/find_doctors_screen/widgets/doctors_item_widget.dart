@@ -24,7 +24,7 @@ class DoctorsItemWidget extends StatelessWidget {
           ),
           SizedBox(height: 9.v),
           Text(
-            "lbl_dr_marcus".tr,
+            AppLocalizations.of(context)!.lbl_dr_marcus,
             style: CustomTextStyles.labelLargeErrorContainer,
           ),
         ],

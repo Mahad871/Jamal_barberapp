@@ -47,12 +47,12 @@ class MycartItemWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "lbl_obh_combi".tr,
+                              AppLocalizations.of(context)!.lbl_obh_combi,
                               style: theme.textTheme.titleMedium,
                             ),
                             SizedBox(height: 3.v),
                             Text(
-                              "lbl_75ml".tr,
+                              AppLocalizations.of(context)!.lbl_75ml,
                               style: theme.textTheme.labelLarge,
                             ),
                           ],
@@ -74,7 +74,7 @@ class MycartItemWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 10.h),
                         child: Text(
-                          "lbl_1".tr,
+                          AppLocalizations.of(context)!.lbl_1,
                           style: CustomTextStyles.titleMedium16,
                         ),
                       ),
@@ -103,7 +103,7 @@ class MycartItemWidget extends StatelessWidget {
                 ),
                 SizedBox(height: 47.v),
                 Text(
-                  "lbl_9_99".tr,
+                  AppLocalizations.of(context)!.lbl_9_99,
                   style: theme.textTheme.titleMedium,
                 ),
               ],

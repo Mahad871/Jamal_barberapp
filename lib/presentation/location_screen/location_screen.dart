@@ -41,7 +41,8 @@ class LocationScreen extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(horizontal: 14.h),
                                 child: CustomSearchView(
                                     controller: searchController,
-                                    hintText: "msg_search_location".tr)),
+                                    hintText: AppLocalizations.of(context)!
+                                        .search_location)),
                             SizedBox(height: 69.v),
                             CustomImageView(
                                 imagePath: ImageConstant.imgGroup183,
@@ -66,7 +67,8 @@ class LocationScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: "lbl_ambulance".tr));
+        title: AppbarSubtitleOne(
+            text: AppLocalizations.of(context)!.lbl_ambulance));
   }
 
   /// Section Widget
@@ -102,7 +104,7 @@ class LocationScreen extends StatelessWidget {
               SizedBox(height: 2.v),
               CustomTextFormField(
                   controller: addressController,
-                  hintText: "msg_confirm_your_address".tr,
+                  hintText: AppLocalizations.of(context)!.confirm_your_address,
                   hintStyle: theme.textTheme.titleSmall!,
                   textInputAction: TextInputAction.done,
                   contentPadding: EdgeInsets.symmetric(horizontal: 4.h),
@@ -121,7 +123,9 @@ class LocationScreen extends StatelessWidget {
                         Container(
                             width: 190.h,
                             margin: EdgeInsets.only(left: 17.h),
-                            child: Text("msg_1111_abcd_rd_102".tr,
+                            child: Text(
+                                AppLocalizations.of(context)!
+                                    .lbl_1111_abcd_rd_102,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: theme.textTheme.bodyMedium!
@@ -130,7 +134,7 @@ class LocationScreen extends StatelessWidget {
               SizedBox(height: 10.v),
               CustomElevatedButton(
                   height: 50.v,
-                  text: "msg_confirm_location".tr,
+                  text: AppLocalizations.of(context)!.confirm_location,
                   margin: EdgeInsets.symmetric(horizontal: 4.h))
             ]));
   }

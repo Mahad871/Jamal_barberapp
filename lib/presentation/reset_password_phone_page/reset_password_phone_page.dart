@@ -42,7 +42,7 @@ class ResetPasswordPhonePageState extends State<ResetPasswordPhonePage>
         child: Column(children: [
           CustomTextFormField(
               controller: mobileNoController,
-              hintText: "lbl_1234567890".tr,
+              hintText: AppLocalizations.of(context)!.lbl_1234567890,
               textInputAction: TextInputAction.done,
               textInputType: TextInputType.phone,
               prefix: Container(
@@ -56,7 +56,7 @@ class ResetPasswordPhonePageState extends State<ResetPasswordPhonePage>
                   EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
           SizedBox(height: 32.v),
           CustomElevatedButton(
-              text: "lbl_send_otp".tr,
+              text: AppLocalizations.of(context)!.lbl_send_otp,
               onPressed: () {
                 onTapSendOTP(context);
               })

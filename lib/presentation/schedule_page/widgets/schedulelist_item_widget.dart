@@ -34,12 +34,12 @@ class SchedulelistItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "msg_dr_marcus_horizon".tr,
+                        AppLocalizations.of(context)!.dr_marcus_horizon,
                         style: theme.textTheme.titleMedium,
                       ),
                       SizedBox(height: 4.v),
                       Text(
-                        "lbl_chardiologist".tr,
+                        AppLocalizations.of(context)!.lbl_chardiologist,
                         style: CustomTextStyles.labelLargeBluegray400,
                       ),
                     ],
@@ -67,7 +67,7 @@ class SchedulelistItemWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 5.h),
                   child: Text(
-                    "lbl_26_06_2022".tr,
+                    AppLocalizations.of(context)!.lbl_26_06_2022,
                     style: CustomTextStyles.labelLargeBluegray700,
                   ),
                 ),
@@ -80,7 +80,7 @@ class SchedulelistItemWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 5.h),
                   child: Text(
-                    "lbl_10_30_am".tr,
+                    AppLocalizations.of(context)!.lbl_10_30_am,
                     style: CustomTextStyles.labelLargeBluegray700,
                   ),
                 ),
@@ -102,7 +102,7 @@ class SchedulelistItemWidget extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 5.h),
                   child: Text(
-                    "lbl_confirmed".tr,
+                    AppLocalizations.of(context)!.lbl_confirmed,
                     style: CustomTextStyles.labelLargeBluegray700,
                   ),
                 ),
@@ -116,7 +116,7 @@ class SchedulelistItemWidget extends StatelessWidget {
               Expanded(
                 child: CustomElevatedButton(
                   height: 46.v,
-                  text: "lbl_cancel".tr,
+                  text: AppLocalizations.of(context)!.lbl_cancel,
                   margin: EdgeInsets.only(right: 7.h),
                   buttonStyle: CustomButtonStyles.fillGray,
                   buttonTextStyle: CustomTextStyles.titleSmallBluegray700,
@@ -125,7 +125,7 @@ class SchedulelistItemWidget extends StatelessWidget {
               Expanded(
                 child: CustomElevatedButton(
                   height: 46.v,
-                  text: "lbl_reschedule".tr,
+                  text: AppLocalizations.of(context)!.lbl_reschedule,
                   margin: EdgeInsets.only(left: 7.h),
                   buttonStyle: CustomButtonStyles.fillBlue,
                   buttonTextStyle: CustomTextStyles.titleSmallPrimary_1,

@@ -21,12 +21,12 @@ class ProfilelistsectionItemWidget extends StatelessWidget {
           ),
           SizedBox(height: 6.v),
           Text(
-            "lbl_heart_rate".tr,
+            AppLocalizations.of(context)!.lbl_heart_rate,
             style: CustomTextStyles.labelMediumBlue50,
           ),
           SizedBox(height: 5.v),
           Text(
-            "lbl_215bpm".tr,
+            AppLocalizations.of(context)!.lbl_215bpm,
             style: CustomTextStyles.titleMediumWhiteA700,
           ),
         ],

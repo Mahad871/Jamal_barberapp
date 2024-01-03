@@ -15,70 +15,71 @@ class DoctorItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 6.h,
-        vertical: 8.v,
-      ),
+      padding: EdgeInsets.only(left: 6.h, right: 6.h, top: 8.v),
+      height: 108.v,
       decoration: AppDecoration.outlineGray.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder8,
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
             alignment: Alignment.centerRight,
-            child: Container(
-              height: 82.v,
-              width: 105.h,
-              margin: EdgeInsets.only(right: 1.h),
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgEllipse88,
-                    height: 71.adaptSize,
-                    width: 71.adaptSize,
-                    radius: BorderRadius.circular(
-                      35.h,
+            child: Flexible(
+              child: Container(
+                margin: EdgeInsets.only(right: 1.h),
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    CustomImageView(
+                      imagePath: ImageConstant.imgEllipse88,
+                      height: 71.adaptSize,
+                      width: 71.adaptSize,
+                      radius: BorderRadius.circular(
+                        35.h,
+                      ),
+                      alignment: Alignment.bottomCenter,
                     ),
-                    alignment: Alignment.bottomLeft,
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        CustomImageView(
-                          imagePath: ImageConstant.imgStar,
-                          height: 16.adaptSize,
-                          width: 16.adaptSize,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 4.h),
-                          child: Text(
-                            "lbl_4_7".tr,
-                            style:
-                                CustomTextStyles.labelLargeAmber500SemiBold,
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CustomImageView(
+                            imagePath: ImageConstant.imgStar,
+                            height: 16.adaptSize,
+                            width: 16.adaptSize,
                           ),
-                        ),
-                      ],
+                          Padding(
+                            padding: EdgeInsets.only(left: 4.h),
+                            child: Text(
+                              AppLocalizations.of(context)!.lbl_4_7,
+                              style:
+                                  CustomTextStyles.labelLargeAmber500SemiBold,
+                              softWrap: true,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
           SizedBox(height: 18.v),
           Text(
-            "msg_dr_marcus_horizon".tr,
+            AppLocalizations.of(context)!.dr_marcus_horizon,
             style: CustomTextStyles.titleMediumErrorContainer,
+            softWrap: true,
           ),
           SizedBox(height: 9.v),
           Text(
-            "lbl_chardiologist".tr,
+            AppLocalizations.of(context)!.lbl_chardiologist,
             style: CustomTextStyles.titleSmallGray500,
+            softWrap: true,
           ),
           SizedBox(height: 5.v),
           Row(
@@ -92,11 +93,11 @@ class DoctorItemWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                   left: 8.h,
-                  top: 3.v,
                 ),
                 child: Text(
-                  "lbl_800m_away".tr,
+                  AppLocalizations.of(context)!.lbl_800m_away,
                   style: CustomTextStyles.titleSmallGray500,
+                  softWrap: true,
                 ),
               ),
             ],

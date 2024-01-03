@@ -1,43 +1,48 @@
-import 'en_us/en_us_translations.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
-import '../core/app_export.dart';
+// import 'package:mahad_s_application3/localization/en_us/ar_translation.dart';
 
-class AppLocalization {
-  AppLocalization(this.locale);
+// import 'en_us/en_us_translations.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/cupertino.dart';
+// import '../core/app_export.dart';
 
-  Locale locale;
+// class AppLocalization {
+//   AppLocalization(this.locale);
 
-  static final Map<String, Map<String, String>> _localizedValues = {'en': enUs};
+//   Locale locale;
 
-  static AppLocalization of() {
-    return Localizations.of<AppLocalization>(
-        NavigatorService.navigatorKey.currentContext!, AppLocalization)!;
-  }
+//   static final Map<String, Map<String, String>> _localizedValues = {
+//     'en': enUs,
+//     'ar': ar,
+//   };
 
-  static List<String> languages() => _localizedValues.keys.toList();
-  String getString(String text) =>
-      _localizedValues[locale.languageCode]![text] ?? text;
-}
+//   static AppLocalization of() {
+//     return Localizations.of<AppLocalization>(
+//         NavigatorService.navigatorKey.currentContext!, AppLocalization)!;
+//   }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
-  const AppLocalizationDelegate();
+//   static List<String> languages() => _localizedValues.keys.toList();
+//   String getString(String text) =>
+//       _localizedValues[locale.languageCode]![text] ?? text;
+// }
 
-  @override
-  bool isSupported(Locale locale) =>
-      AppLocalization.languages().contains(locale.languageCode);
+// class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
+//   const AppLocalizationDelegate();
 
-  //Returning a SynchronousFuture here because an async "load" operation
-  //cause an async "load" operation
-  @override
-  Future<AppLocalization> load(Locale locale) {
-    return SynchronousFuture<AppLocalization>(AppLocalization(locale));
-  }
+//   @override
+//   bool isSupported(Locale locale) =>
+//       AppLocalization.languages().contains(locale.languageCode);
 
-  @override
-  bool shouldReload(AppLocalizationDelegate old) => false;
-}
+//   //Returning a SynchronousFuture here because an async "load" operation
+//   //cause an async "load" operation
+//   @override
+//   Future<AppLocalization> load(Locale locale) {
+//     return SynchronousFuture<AppLocalization>(AppLocalization(locale));
+//   }
 
-extension LocalizationExtension on String {
-  String get tr => AppLocalization.of().getString(this);
-}
+//   @override
+//   bool shouldReload(AppLocalizationDelegate old) => false;
+// }
+
+// extension LocalizationExtension on String {
+//   String get tr => AppLocalization.of().getString(this);
+// }

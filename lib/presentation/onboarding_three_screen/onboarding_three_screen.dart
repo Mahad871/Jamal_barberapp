@@ -54,7 +54,7 @@ class OnboardingThreeScreen extends StatelessWidget {
                   Container(
                       width: 244.h,
                       margin: EdgeInsets.only(left: 3.h, right: 45.h),
-                      child: Text("msg_get_connect_our".tr,
+                      child: Text(AppLocalizations.of(context)!.onBoarding_three_txt,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.titleLarge!
@@ -75,7 +75,7 @@ class OnboardingThreeScreen extends StatelessWidget {
                                   dotWidth: 8.h)))),
                   SizedBox(height: 54.v),
                   CustomElevatedButton(
-                      text: "lbl_get_started".tr,
+                      text: AppLocalizations.of(context)!.get_started,
                       margin: EdgeInsets.only(left: 2.h),
                       onPressed: () {
                         Navigator.pushReplacementNamed(

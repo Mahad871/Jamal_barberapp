@@ -26,7 +26,8 @@ class FindDoctorsScreen extends StatelessWidget {
                 child: Column(children: [
                   CustomSearchView(
                       controller: searchController,
-                      hintText: "lbl_find_a_doctor".tr),
+                      hintText:
+                          AppLocalizations.of(context)!.lbl_find_a_doctor),
                   SizedBox(height: 28.v),
                   _buildCategories(context),
                   SizedBox(height: 24.v),
@@ -48,7 +49,8 @@ class FindDoctorsScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: "lbl_find_doctors".tr));
+        title: AppbarSubtitleOne(
+            text: AppLocalizations.of(context)!.lbl_find_doctors));
   }
 
   /// Section Widget
@@ -56,7 +58,8 @@ class FindDoctorsScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 2.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("lbl_category".tr, style: theme.textTheme.titleMedium),
+          Text(AppLocalizations.of(context)!.lbl_category,
+              style: theme.textTheme.titleMedium),
           SizedBox(height: 16.v),
           Padding(
               padding: EdgeInsets.only(right: 5.h),
@@ -80,7 +83,7 @@ class FindDoctorsScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 2.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("msg_recommended_doctors".tr,
+          Text(AppLocalizations.of(context)!.recommended_doctors,
               style: theme.textTheme.titleMedium),
           SizedBox(height: 11.v),
           Container(
@@ -103,10 +106,14 @@ class FindDoctorsScreen extends StatelessWidget {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("msg_dr_marcus_horizon".tr,
+                              Text(
+                                  AppLocalizations.of(context)!
+                                      .dr_marcus_horizon,
                                   style: CustomTextStyles.titleMedium16),
                               SizedBox(height: 9.v),
-                              Text("lbl_chardiologist".tr,
+                              Text(
+                                  AppLocalizations.of(context)!
+                                      .lbl_chardiologist,
                                   style: CustomTextStyles.bodyMediumGray500),
                               SizedBox(height: 4.v),
                               SizedBox(width: 167.h, child: Divider()),
@@ -119,7 +126,8 @@ class FindDoctorsScreen extends StatelessWidget {
                                     margin: EdgeInsets.only(bottom: 1.v)),
                                 Padding(
                                     padding: EdgeInsets.only(left: 4.h),
-                                    child: Text("lbl_4_7".tr,
+                                    child: Text(
+                                        AppLocalizations.of(context)!.lbl_4_7,
                                         style: CustomTextStyles
                                             .labelLargeAmber500)),
                                 CustomImageView(
@@ -131,7 +139,9 @@ class FindDoctorsScreen extends StatelessWidget {
                                         left: 24.h, bottom: 1.v)),
                                 Padding(
                                     padding: EdgeInsets.only(left: 4.h),
-                                    child: Text("lbl_800m_away".tr,
+                                    child: Text(
+                                        AppLocalizations.of(context)!
+                                            .lbl_800m_away,
                                         style: CustomTextStyles
                                             .titleSmallErrorContainer))
                               ])
@@ -145,7 +155,7 @@ class FindDoctorsScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 2.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("msg_your_recent_doctors".tr,
+          Text(AppLocalizations.of(context)!.recommended_doctors,
               style: theme.textTheme.titleMedium),
           SizedBox(height: 18.v),
           SizedBox(

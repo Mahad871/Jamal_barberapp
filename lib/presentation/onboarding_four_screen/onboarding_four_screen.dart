@@ -19,14 +19,14 @@ class OnboardingFourScreen extends StatelessWidget {
                   _buildGetStartedSection(context),
                   Spacer(flex: 59),
                   CustomElevatedButton(
-                      text: "lbl_login".tr,
+                      text: AppLocalizations.of(context)!.login_text,
                       onPressed: () {
                         Navigator.pushReplacementNamed(
                             context, AppRoutes.loginScreen);
                       }),
                   SizedBox(height: 16.v),
                   CustomOutlinedButton(
-                      text: "lbl_sign_up".tr,
+                      text: AppLocalizations.of(context)!.signup_text,
                       buttonStyle: CustomButtonStyles.outlinePrimary,
                       buttonTextStyle: CustomTextStyles.titleMediumPrimary,
                       onPressed: () {
@@ -44,14 +44,13 @@ class OnboardingFourScreen extends StatelessWidget {
           CustomImageView(
               imagePath: ImageConstant.appLogo, height: 120.v, width: 120.h),
           // SizedBox(height: 5.v),
-          // Text("lbl_helthio".tr, style: CustomTextStyles.headlineSmallPrimary),
+          // Text("lbl_helthio", style: CustomTextStyles.headlineSmallPrimary),
           SizedBox(height: 38.v),
-          Text("msg_let_s_get_started".tr,
-              style: theme.textTheme.headlineSmall),
+          Text(AppLocalizations.of(context)!.lets_get_started, style: theme.textTheme.headlineSmall),
           // SizedBox(height: 7.v),
           // SizedBox(
           //     width: 244.h,
-          //     child: Text("msg_login_to_enjoy_the".tr,
+          //     child: Text("msg_login_to_enjoy_the",
           //         maxLines: 2,
           //         overflow: TextOverflow.ellipsis,
           //         textAlign: TextAlign.center,

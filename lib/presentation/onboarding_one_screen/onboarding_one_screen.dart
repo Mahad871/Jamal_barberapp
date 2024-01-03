@@ -53,7 +53,8 @@ class OnboardingOneScreen extends StatelessWidget {
                   Container(
                       width: 276.h,
                       margin: EdgeInsets.only(left: 2.h, right: 12.h),
-                      child: Text("msg_consult_only_with".tr,
+                      child: Text(
+                          AppLocalizations.of(context)!.onBoarding_one_txt,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: theme.textTheme.titleLarge!
@@ -84,12 +85,12 @@ class OnboardingOneScreen extends StatelessWidget {
                             child: Padding(
                                 padding:
                                     EdgeInsets.only(top: 20.v, bottom: 18.v),
-                                child: Text("lbl_skip".tr,
+                                child: Text(AppLocalizations.of(context)!.lbl_skip,
                                     style:
                                         CustomTextStyles.titleSmallPrimary))),
                         CustomElevatedButton(
                           width: 145.h,
-                          text: "lbl_next".tr,
+                          text: AppLocalizations.of(context)!.lbl_next,
                           onPressed: () {
                             Navigator.pushReplacementNamed(
                                 context, AppRoutes.onboardingTwoScreen);

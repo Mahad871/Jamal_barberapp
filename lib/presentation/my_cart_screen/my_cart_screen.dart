@@ -40,7 +40,8 @@ class MyCartScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: "lbl_my_cart".tr));
+        title:
+            AppbarSubtitleOne(text: AppLocalizations.of(context)!.lbl_my_cart));
   }
 
   /// Section Widget
@@ -60,22 +61,26 @@ class MyCartScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildPaymentDetail(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text("lbl_payment_detail".tr, style: CustomTextStyles.titleMedium16),
+      Text(AppLocalizations.of(context)!.lbl_payment_detail,
+          style: CustomTextStyles.titleMedium16),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 4.h),
           child: _buildTotal(context,
-              totalLabel: "lbl_subtotal".tr, priceLabel: "lbl_25_98".tr)),
+              totalLabel: AppLocalizations.of(context)!.lbl_subtotal,
+              priceLabel: AppLocalizations.of(context)!.lbl_25_98)),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
           child: _buildCard(context,
-              visaLabel: "lbl_taxes".tr, changeLabel: "lbl_1_00".tr)),
+              visaLabel: AppLocalizations.of(context)!.lbl_taxes,
+              changeLabel: AppLocalizations.of(context)!.lbl_1_00)),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 4.h),
           child: _buildTotal(context,
-              totalLabel: "lbl_total".tr, priceLabel: "lbl_26_98".tr)),
+              totalLabel: AppLocalizations.of(context)!.lbl_total,
+              priceLabel: AppLocalizations.of(context)!.lbl_26_98)),
       SizedBox(height: 13.v),
       Divider()
     ]);
@@ -86,13 +91,13 @@ class MyCartScreen extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
           padding: EdgeInsets.only(left: 1.h),
-          child: Text("lbl_payment_method".tr,
+          child: Text(AppLocalizations.of(context)!.lbl_payment_method,
               style: CustomTextStyles.titleMedium16)),
       SizedBox(height: 10.v),
       Padding(
           padding: EdgeInsets.only(left: 1.h),
           child: _buildCard(context,
-              visaLabel: "lbl_visa".tr, changeLabel: "lbl_change".tr))
+              visaLabel: AppLocalizations.of(context)!.lbl_visa, changeLabel: AppLocalizations.of(context)!.lbl_change))
     ]);
   }
 
@@ -108,17 +113,17 @@ class MyCartScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("lbl_total".tr,
+                    Text(AppLocalizations.of(context)!.lbl_total,
                         style: CustomTextStyles.titleSmallGray500),
                     Padding(
                         padding: EdgeInsets.only(top: 3.v),
-                        child: Text("lbl_26_982".tr,
+                        child: Text(AppLocalizations.of(context)!.lbl_26_98,
                             style: theme.textTheme.titleMedium))
                   ])),
           CustomElevatedButton(
               height: 50.v,
               width: 192.h,
-              text: "lbl_checkout".tr,
+              text: AppLocalizations.of(context)!.lbl_checkout,
               buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
               onPressed: () {
                 // onTapCheckout(context);

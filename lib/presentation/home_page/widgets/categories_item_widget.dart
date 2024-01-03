@@ -35,8 +35,9 @@ class CategoriesItemWidget extends StatelessWidget {
             ),
             SizedBox(height: 9.v),
             Text(
-              "lbl_ambulance".tr,
+              AppLocalizations.of(context)!.lbl_ambulance,
               style: CustomTextStyles.titleSmallGray500,
+              softWrap: true,
             ),
           ],
         ),

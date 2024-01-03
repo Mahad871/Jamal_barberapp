@@ -76,7 +76,7 @@ class ResetPasswordTabContainerScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "msg_forgot_your_password".tr,
+              AppLocalizations.of(context)!.lbl_forgot_your_password,
               style: theme.textTheme.headlineSmall,
             ),
             SizedBox(height: 8.v),
@@ -84,7 +84,8 @@ class ResetPasswordTabContainerScreenState
               width: 319.h,
               margin: EdgeInsets.only(right: 8.h),
               child: Text(
-                "msg_enter_your_email2".tr,
+                AppLocalizations.of(context)!
+                    .enter_your_email_or_your_phone_number_we_will_send_you_confirmation_code,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style:
@@ -135,8 +136,8 @@ class ResetPasswordTabContainerScreenState
           ],
         ),
         tabs: [
-          Tab(child: Text("lbl_email".tr)),
-          Tab(child: Text("lbl_phone".tr)),
+          Tab(child: Text(AppLocalizations.of(context)!.lbl_email)),
+          Tab(child: Text(AppLocalizations.of(context)!.lbl_phone)),
         ],
       ),
     );

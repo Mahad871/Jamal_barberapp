@@ -57,7 +57,8 @@ class BookingDoctorScreen extends StatelessWidget {
               Navigator.pop(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: "lbl_appointment".tr));
+        title: AppbarSubtitleOne(
+            text: AppLocalizations.of(context)!.lbl_appointment));
   }
 
   /// Section Widget
@@ -75,10 +76,10 @@ class BookingDoctorScreen extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("msg_dr_marcus_horizon".tr,
+                    Text(AppLocalizations.of(context)!.dr_marcus_horizon,
                         style: theme.textTheme.titleMedium),
                     SizedBox(height: 8.v),
-                    Text("lbl_chardiologist".tr,
+                    Text(AppLocalizations.of(context)!.lbl_chardiologist,
                         style: theme.textTheme.labelLarge),
                     SizedBox(height: 8.v),
                     Row(children: [
@@ -88,7 +89,7 @@ class BookingDoctorScreen extends StatelessWidget {
                           width: 16.adaptSize),
                       Padding(
                           padding: EdgeInsets.only(left: 4.h),
-                          child: Text("lbl_4_7".tr,
+                          child: Text(AppLocalizations.of(context)!.lbl_4_7,
                               style: CustomTextStyles.labelLargeAmber500))
                     ]),
                     SizedBox(height: 11.v),
@@ -100,7 +101,8 @@ class BookingDoctorScreen extends StatelessWidget {
                           margin: EdgeInsets.only(bottom: 2.v)),
                       Padding(
                           padding: EdgeInsets.only(left: 3.h),
-                          child: Text("lbl_800m_away".tr,
+                          child: Text(
+                              AppLocalizations.of(context)!.lbl_800m_away,
                               style: theme.textTheme.labelLarge))
                     ])
                   ]))
@@ -113,7 +115,8 @@ class BookingDoctorScreen extends StatelessWidget {
       Padding(
           padding: EdgeInsets.only(left: 1.h),
           child: _buildAdminFee(context,
-              adminFee: "lbl_date".tr, price: "lbl_change".tr)),
+              adminFee: AppLocalizations.of(context)!.lbl_admin_fee,
+              price: AppLocalizations.of(context)!.lbl_change)),
       SizedBox(height: 7.v),
       Padding(
           padding: EdgeInsets.only(right: 42.h),
@@ -126,7 +129,7 @@ class BookingDoctorScreen extends StatelessWidget {
                 child: CustomImageView(imagePath: ImageConstant.imgCalendar)),
             Padding(
                 padding: EdgeInsets.only(left: 15.h, top: 12.v, bottom: 6.v),
-                child: Text("msg_wednesday_jun_23".tr,
+                child: Text(AppLocalizations.of(context)!.wednesday_jun_23,
                     style: CustomTextStyles.titleSmallBluegray700))
           ]))
     ]);
@@ -136,12 +139,13 @@ class BookingDoctorScreen extends StatelessWidget {
   Widget _buildReason1(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       _buildCard(context,
-          visaText: "lbl_reason".tr, changeText: "lbl_change".tr),
+          visaText: AppLocalizations.of(context)!.lbl_reason,
+          changeText: AppLocalizations.of(context)!.lbl_change),
       SizedBox(height: 7.v),
       CustomTextFormField(
           width: 122.h,
           controller: shareController,
-          hintText: "lbl_chest_pain".tr,
+          hintText: AppLocalizations.of(context)!.lbl_chest_pain,
           hintStyle: theme.textTheme.titleSmall!,
           textInputAction: TextInputAction.done,
           prefix: Container(
@@ -162,27 +166,32 @@ class BookingDoctorScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildPaymentDetail(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text("lbl_payment_detail".tr, style: CustomTextStyles.titleMedium16),
+      Text(AppLocalizations.of(context)!.lbl_payment_detail,
+          style: CustomTextStyles.titleMedium16),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
           child: _buildTotal(context,
-              totalLabel: "lbl_consultation".tr, priceLabel: "lbl_60_00".tr)),
+              totalLabel: AppLocalizations.of(context)!.lbl_consultation,
+              priceLabel: AppLocalizations.of(context)!.lbl_60_00)),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
           child: _buildAdminFee(context,
-              adminFee: "lbl_admin_fee".tr, price: "lbl_01_00".tr)),
+              adminFee: AppLocalizations.of(context)!.lbl_admin_fee,
+              price: AppLocalizations.of(context)!.lbl_01_00)),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
           child: _buildAdminFee(context,
-              adminFee: "msg_aditional_discount".tr, price: "lbl".tr)),
+              adminFee: AppLocalizations.of(context)!.aditional_discount,
+              price: AppLocalizations.of(context)!.lbl)),
       SizedBox(height: 12.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
           child: _buildTotal(context,
-              totalLabel: "lbl_total".tr, priceLabel: "lbl_61_00".tr))
+              totalLabel: AppLocalizations.of(context)!.lbl_total,
+              priceLabel: AppLocalizations.of(context)!.lbl_61_00))
     ]);
   }
 
@@ -191,10 +200,12 @@ class BookingDoctorScreen extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
           padding: EdgeInsets.only(left: 2.h),
-          child: Text("lbl_payment_method".tr,
+          child: Text(AppLocalizations.of(context)!.lbl_payment_method,
               style: CustomTextStyles.titleMedium16)),
       SizedBox(height: 10.v),
-      _buildCard(context, visaText: "lbl_visa".tr, changeText: "lbl_change".tr)
+      _buildCard(context,
+          visaText: AppLocalizations.of(context)!.lbl_visa,
+          changeText: AppLocalizations.of(context)!.lbl_change)
     ]);
   }
 
@@ -210,17 +221,17 @@ class BookingDoctorScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("lbl_total".tr,
+                    Text(AppLocalizations.of(context)!.lbl_total,
                         style: CustomTextStyles.titleSmallGray500),
                     Padding(
                         padding: EdgeInsets.only(top: 3.v),
-                        child: Text("lbl_61_002".tr,
+                        child: Text(AppLocalizations.of(context)!.lbl_61_002,
                             style: theme.textTheme.titleMedium))
                   ])),
           CustomElevatedButton(
               height: 50.v,
               width: 192.h,
-              text: "lbl_checkout".tr,
+              text: AppLocalizations.of(context)!.lbl_checkout,
               buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
               onPressed: () {
                 // onTapCheckout(context);

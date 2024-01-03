@@ -41,7 +41,7 @@ class DoctorDetailScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: "lbl_details".tr),
+        title: AppbarSubtitleOne(text: AppLocalizations.of(context)!.lbl_details),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgOverflowMenu,
@@ -68,10 +68,10 @@ class DoctorDetailScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("msg_dr_marcus_horizon".tr,
+                      Text(AppLocalizations.of(context)!.dr_marcus_horizon,
                           style: theme.textTheme.titleMedium),
                       SizedBox(height: 8.v),
-                      Text("lbl_chardiologist".tr,
+                      Text(AppLocalizations.of(context)!.lbl_chardiologist,
                           style: theme.textTheme.labelLarge),
                       SizedBox(height: 8.v),
                       Row(children: [
@@ -81,7 +81,7 @@ class DoctorDetailScreen extends StatelessWidget {
                             width: 16.adaptSize),
                         Padding(
                             padding: EdgeInsets.only(left: 4.h),
-                            child: Text("lbl_4_7".tr,
+                            child: Text(AppLocalizations.of(context)!.lbl_4_7,
                                 style: CustomTextStyles.labelLargeAmber500))
                       ]),
                       SizedBox(height: 11.v),
@@ -93,21 +93,21 @@ class DoctorDetailScreen extends StatelessWidget {
                             margin: EdgeInsets.only(bottom: 2.v)),
                         Padding(
                             padding: EdgeInsets.only(left: 3.h),
-                            child: Text("lbl_800m_away".tr,
+                            child: Text(AppLocalizations.of(context)!.lbl_800m_away,
                                 style: theme.textTheme.labelLarge))
                       ])
                     ]))
           ])),
       SizedBox(height: 17.v),
-      Text("lbl_about".tr, style: CustomTextStyles.titleMedium16),
+      Text(AppLocalizations.of(context)!.lbl_about, style: CustomTextStyles.titleMedium16),
       SizedBox(height: 8.v),
       SizedBox(
           width: 305.h,
-          child: ReadMoreText("msg_lorem_ipsum_dolor".tr,
+          child: ReadMoreText(AppLocalizations.of(context)!.lorem_ipsum_dolor,
               trimLines: 3,
               colorClickableText: theme.colorScheme.primary,
               trimMode: TrimMode.Line,
-              trimCollapsedText: "lbl_read_more".tr,
+              trimCollapsedText: AppLocalizations.of(context)!.lbl_read_more,
               moreStyle:
                   CustomTextStyles.bodySmallGray600.copyWith(height: 1.50),
               lessStyle:
@@ -120,27 +120,27 @@ class DoctorDetailScreen extends StatelessWidget {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         _buildThirtyOne(context,
-            dynamicText1: "lbl_mon".tr, dynamicText2: "lbl_21".tr),
+            dynamicText1: AppLocalizations.of(context)!.lbl_mon, dynamicText2: AppLocalizations.of(context)!.lbl_21),
         Padding(
             padding: EdgeInsets.only(left: 12.h),
             child: _buildThirtyOne(context,
-                dynamicText1: "lbl_tue".tr, dynamicText2: "lbl_22".tr)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_tue, dynamicText2: AppLocalizations.of(context)!.lbl_22)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: "lbl_wed".tr, dynamicText2: "lbl_23".tr)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_wed, dynamicText2: AppLocalizations.of(context)!.lbl_23)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: "lbl_thu".tr, dynamicText2: "lbl_24".tr)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_thu, dynamicText2: AppLocalizations.of(context)!.lbl_24)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: "lbl_fri".tr, dynamicText2: "lbl_25".tr)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_fri, dynamicText2: AppLocalizations.of(context)!.lbl_25)),
         Padding(
             padding: EdgeInsets.only(left: 6.h),
             child: _buildThirtyOne(context,
-                dynamicText1: "lbl_sat".tr, dynamicText2: "lbl_26".tr))
+                dynamicText1: AppLocalizations.of(context)!.lbl_sat, dynamicText2: AppLocalizations.of(context)!.lbl_26))
       ]),
       SizedBox(height: 32.v),
       Divider(),
@@ -166,7 +166,7 @@ class DoctorDetailScreen extends StatelessWidget {
           Expanded(
               child: CustomElevatedButton(
                   height: 50.v,
-                  text: "lbl_book_apointment".tr,
+                  text: AppLocalizations.of(context)!.lbl_book_apointment,
                   margin: EdgeInsets.only(left: 16.h),
                   buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
                   onPressed: () {

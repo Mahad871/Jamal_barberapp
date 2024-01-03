@@ -35,7 +35,7 @@ class ResetPasswordVerifyCodeScreen extends StatelessWidget {
                               context: context, onChanged: (value) {})),
                       SizedBox(height: 40.v),
                       CustomElevatedButton(
-                          text: "lbl_verify".tr,
+                          text: AppLocalizations.of(context)!.lbl_verify,
                           margin: EdgeInsets.only(left: 1.h),
                           onPressed: () {
                             // onTapVerify(context);
@@ -46,11 +46,15 @@ class ResetPasswordVerifyCodeScreen extends StatelessWidget {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("msg_didn_t_receive_the".tr,
+                                Text(
+                                    AppLocalizations.of(context)!
+                                        .didn_t_receive_the,
                                     style: CustomTextStyles.bodyMediumGray600),
                                 Padding(
                                     padding: EdgeInsets.only(left: 4.h),
-                                    child: Text("lbl_resend".tr,
+                                    child: Text(
+                                        AppLocalizations.of(context)!
+                                            .lbl_resend,
                                         style: CustomTextStyles
                                             .titleSmallPrimary_1))
                               ])),
@@ -63,7 +67,7 @@ class ResetPasswordVerifyCodeScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 1.h),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("msg_enter_verification".tr,
+          Text(AppLocalizations.of(context)!.enter_verification,
               style: theme.textTheme.headlineSmall),
           SizedBox(height: 10.v),
           Container(
@@ -72,10 +76,10 @@ class ResetPasswordVerifyCodeScreen extends StatelessWidget {
               child: RichText(
                   text: TextSpan(children: [
                     TextSpan(
-                        text: "msg_enter_code_that2".tr,
+                        text: AppLocalizations.of(context)!.enter_code_that2,
                         style: CustomTextStyles.titleMediumGray500Medium),
                     TextSpan(
-                        text: "lbl_08528188".tr,
+                        text: AppLocalizations.of(context)!.lbl_08528188,
                         style: CustomTextStyles.titleMediumMedium16)
                   ]),
                   textAlign: TextAlign.left))

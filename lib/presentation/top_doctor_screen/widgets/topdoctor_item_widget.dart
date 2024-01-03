@@ -43,12 +43,12 @@ class TopdoctorItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "msg_dr_marcus_horizon2".tr,
+                    AppLocalizations.of(context)!.dr_marcus_horizon2,
                     style: theme.textTheme.titleMedium,
                   ),
                   SizedBox(height: 8.v),
                   Text(
-                    "lbl_chardiologist".tr,
+                    AppLocalizations.of(context)!.lbl_chardiologist,
                     style: theme.textTheme.labelLarge,
                   ),
                   SizedBox(height: 8.v),
@@ -62,7 +62,7 @@ class TopdoctorItemWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 4.h),
                         child: Text(
-                          "lbl_4_7".tr,
+                          AppLocalizations.of(context)!.lbl_4_7,
                           style: CustomTextStyles.labelLargeAmber500,
                         ),
                       ),
@@ -80,7 +80,7 @@ class TopdoctorItemWidget extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 3.h),
                         child: Text(
-                          "lbl_800m_away".tr,
+                          AppLocalizations.of(context)!.lbl_800m_away,
                           style: theme.textTheme.labelLarge,
                         ),
                       ),

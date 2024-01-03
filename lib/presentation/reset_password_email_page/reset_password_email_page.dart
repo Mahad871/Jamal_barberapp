@@ -42,7 +42,7 @@ class ResetPasswordEmailPageState extends State<ResetPasswordEmailPage>
         child: Column(children: [
           CustomTextFormField(
               controller: emailController,
-              hintText: "lbl_xyz_gmail_com".tr,
+              hintText: AppLocalizations.of(context)!.lbl_xyz_gmail_com,
               textInputAction: TextInputAction.done,
               textInputType: TextInputType.emailAddress,
               prefix: Container(
@@ -61,7 +61,7 @@ class ResetPasswordEmailPageState extends State<ResetPasswordEmailPage>
               suffixConstraints: BoxConstraints(maxHeight: 56.v)),
           SizedBox(height: 32.v),
           CustomElevatedButton(
-              text: "lbl_send_otp".tr,
+              text: AppLocalizations.of(context)!.lbl_send_otp,
               onPressed: () {
                 onTapSendOTP(context);
               })

@@ -31,7 +31,7 @@ class FinddoctorsItemWidget extends StatelessWidget {
         ),
         SizedBox(height: 9.v),
         Text(
-          "lbl_general".tr,
+          AppLocalizations.of(context)!.lbl_general,
           style: CustomTextStyles.bodyMediumBluegray400,
         ),
       ],

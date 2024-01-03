@@ -33,7 +33,8 @@ class CreateNewPasswordScreen extends StatelessWidget {
                       SizedBox(height: 24.v),
                       CustomTextFormField(
                           controller: newpasswordController,
-                          hintText: "msg_enter_new_password".tr,
+                          hintText:
+                              AppLocalizations.of(context)!.enter_your_password,
                           textInputType: TextInputType.visiblePassword,
                           prefix: Container(
                               margin:
@@ -55,7 +56,8 @@ class CreateNewPasswordScreen extends StatelessWidget {
                       SizedBox(height: 16.v),
                       CustomTextFormField(
                           controller: confirmpasswordController,
-                          hintText: "msg_confirm_password".tr,
+                          hintText:
+                              AppLocalizations.of(context)!.confirm_password,
                           textInputAction: TextInputAction.done,
                           textInputType: TextInputType.visiblePassword,
                           prefix: Container(
@@ -77,7 +79,8 @@ class CreateNewPasswordScreen extends StatelessWidget {
                           obscureText: true),
                       SizedBox(height: 24.v),
                       CustomElevatedButton(
-                          text: "lbl_create_password".tr,
+                          text:
+                              AppLocalizations.of(context)!.lbl_create_password,
                           onPressed: () {
                             // onTapCreatePassword(context);
                           }),
@@ -100,9 +103,11 @@ class CreateNewPasswordScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildTitle(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text("msg_create_new_password".tr, style: theme.textTheme.headlineSmall),
+      Text(AppLocalizations.of(context)!.create_new_password,
+          style: theme.textTheme.headlineSmall),
       SizedBox(height: 12.v),
-      Text("msg_create_your_new".tr, style: CustomTextStyles.titleMediumGray500)
+      Text(AppLocalizations.of(context)!.create_your_new,
+          style: CustomTextStyles.titleMediumGray500)
     ]);
   }
 }

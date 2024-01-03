@@ -92,7 +92,7 @@ class ProfilePage extends StatelessWidget {
                 child: CustomImageView(imagePath: ImageConstant.imgCamera))
           ])),
       SizedBox(height: 19.v),
-      Text("lbl_amelia_renata".tr,
+      Text(AppLocalizations.of(context)!.lbl_amelia_renata,
           style: CustomTextStyles.titleMediumWhiteA700_1)
     ]);
   }
@@ -143,8 +143,8 @@ class ProfilePage extends StatelessWidget {
           ])),
       Padding(
           padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
-          child:
-              Text("lbl_my_saved".tr, style: CustomTextStyles.titleMedium16)),
+          child: Text(AppLocalizations.of(context)!.lbl_my_saved,
+              style: CustomTextStyles.titleMedium16)),
       Spacer(),
       CustomImageView(
           imagePath: ImageConstant.imgArrowRight,
@@ -177,7 +177,7 @@ class ProfilePage extends StatelessWidget {
           ])),
       Padding(
           padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
-          child: Text("lbl_appointmnet".tr,
+          child: Text(AppLocalizations.of(context)!.lbl_appointmnet,
               style: CustomTextStyles.titleMedium16)),
       Spacer(),
       CustomImageView(
@@ -211,7 +211,7 @@ class ProfilePage extends StatelessWidget {
           ])),
       Padding(
           padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
-          child: Text("lbl_payment_method".tr,
+          child: Text(AppLocalizations.of(context)!.lbl_payment_method,
               style: CustomTextStyles.titleMedium16)),
       Spacer(),
       CustomImageView(
@@ -245,7 +245,8 @@ class ProfilePage extends StatelessWidget {
           ])),
       Padding(
           padding: EdgeInsets.only(left: 18.h, top: 16.v, bottom: 12.v),
-          child: Text("lbl_faqs".tr, style: CustomTextStyles.titleMedium16)),
+          child: Text(AppLocalizations.of(context)!.lbl_faqs,
+              style: CustomTextStyles.titleMedium16)),
       Spacer(),
       CustomImageView(
           imagePath: ImageConstant.imgArrowRight,
@@ -283,7 +284,7 @@ class ProfilePage extends StatelessWidget {
             ])),
         Padding(
             padding: EdgeInsets.only(left: 18.h, top: 18.v, bottom: 11.v),
-            child: Text("lbl_logout".tr,
+            child: Text(AppLocalizations.of(context)!.lbl_logout,
                 style: CustomTextStyles.titleMediumRedA200)),
         Spacer(),
         CustomImageView(

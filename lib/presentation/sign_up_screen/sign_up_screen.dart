@@ -65,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(height: 29.v),
                           CustomElevatedButton(
                               isLoading: this.isloading,
-                              text: "lbl_sign_up".tr,
+                              text: AppLocalizations.of(context)!.lbl_sign_up,
                               onPressed: () async {
                                 setState(() {
                                   this.isloading = true;
@@ -88,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       context, AppRoutes.signUpSuccessScreen);
                                 } else {
                                   Fluttertoast.showToast(
-                                    msg: "please enter valid email or password",
+                                    msg: "please enter valid username, email or password",
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.BOTTOM,
                                     backgroundColor: Colors.white,
@@ -101,7 +101,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             padding: EdgeInsets.only(left: 44.h),
                             child: Row(
                               children: [
-                                Text("msg_already_have_an".tr,
+                                Text(
+                                    AppLocalizations.of(context)!
+                                        .already_have_an,
                                     style: CustomTextStyles.bodyMediumGray600),
                                 GestureDetector(
                                     onTap: () {
@@ -110,7 +112,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     },
                                     child: Padding(
                                         padding: EdgeInsets.only(left: 4.h),
-                                        child: Text("lbl_log_in2".tr,
+                                        child: Text(
+                                            AppLocalizations.of(context)!
+                                                .lbl_log_in2,
                                             style: CustomTextStyles
                                                 .titleSmallPrimary_1)))
                               ],
@@ -122,7 +126,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           InkWell(
                             enableFeedback: true,
                             child: CustomOutlinedButton(
-                              text: "msg_sign_up_with_google".tr,
+                              text: AppLocalizations.of(context)!
+                                  .sign_up_with_google,
                               onPressed: () async {
                                 bool condition = await sl
                                     .get<AuthMethods>()
@@ -158,22 +163,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-        leadingWidth: 64.h,
-        // leading: AppbarLeadingImage(
-        //     imagePath: ImageConstant.imgArrowLeft,
-        //     margin: EdgeInsets.only(left: 24.h),
-        //     onTap: () {
-        //       Navigator.pop(context);
-        //     }),
-        centerTitle: true,
-        title: AppbarSubtitleTwo(text: "lbl_sign_up".tr));
+      leadingWidth: 64.h,
+      // leading: AppbarLeadingImage(
+      //     imagePath: ImageConstant.imgArrowLeft,
+      //     margin: EdgeInsets.only(left: 24.h),
+      //     onTap: () {
+      //       Navigator.pop(context);
+      //     }),
+      centerTitle: true,
+      title: AppbarSubtitleTwo(text: AppLocalizations.of(context)!.lbl_sign_up),
+    );
   }
 
   /// Section Widget
   Widget _buildNameEditText(BuildContext context) {
     return CustomTextFormField(
         controller: nameEditTextController,
-        hintText: "lbl_enter_your_name".tr,
+        hintText: AppLocalizations.of(context)!.lbl_enter_your_name,
         prefix: Container(
             margin: EdgeInsets.fromLTRB(24.h, 16.v, 16.h, 16.v),
             child: CustomImageView(
@@ -188,7 +194,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget _buildEmailEditText(BuildContext context) {
     return CustomTextFormField(
         controller: emailEditTextController,
-        hintText: "msg_enter_your_email".tr,
+        hintText: AppLocalizations.of(context)!.enter_your_email,
         textInputType: TextInputType.emailAddress,
         prefix: Container(
             margin: EdgeInsets.fromLTRB(24.h, 16.v, 16.h, 16.v),
@@ -204,7 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget _buildPasswordEditText(BuildContext context) {
     return CustomTextFormField(
         controller: passwordEditTextController,
-        hintText: "msg_enter_your_password".tr,
+        hintText: AppLocalizations.of(context)!.enter_your_password,
         textInputAction: TextInputAction.done,
         textInputType: TextInputType.visiblePassword,
         prefix: Container(
@@ -235,7 +241,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Padding(
         padding: EdgeInsets.only(right: 28.h),
         child: CustomCheckboxButton(
-            text: "msg_i_agree_to_the_medidoc".tr,
+            text: "msg_i_agree_to_the_medidoc",
             isExpandedText: true,
             value: agreeCheckBox,
             onChange: (value) {
@@ -246,7 +252,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   /// Section Widget
   Widget _buildSignUpButton(BuildContext context) {
     return CustomElevatedButton(
-        text: "lbl_sign_up".tr,
+        text: AppLocalizations.of(context)!.lbl_sign_up,
         onPressed: () {
           Navigator.pushNamed(context, AppRoutes.signUpSuccessScreen);
         });
@@ -261,7 +267,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           padding: EdgeInsets.only(top: 8.v, bottom: 9.v),
           child: SizedBox(width: 137.h, child: Divider()),
         ),
-        Text("lbl_or".tr, style: theme.textTheme.bodyLarge),
+        Text(AppLocalizations.of(context)!.lbl_or,
+            style: theme.textTheme.bodyLarge),
         Padding(
           padding: EdgeInsets.only(top: 8.v, bottom: 9.v),
           child: SizedBox(width: 137.h, child: Divider()),

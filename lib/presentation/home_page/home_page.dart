@@ -30,9 +30,11 @@ class HomePage extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 24.h),
                         child: Column(children: [
                           CustomSearchView(
-                              autofocus: false,
-                              controller: searchController,
-                              hintText: "msg_search_barber_shops".tr),
+                            autofocus: false,
+                            controller: searchController,
+                            hintText: AppLocalizations.of(context)!
+                                .search_barber_shops,
+                          ),
                           SizedBox(height: 16.v),
                           _buildCategories(context),
                           SizedBox(height: 15.v),
@@ -47,10 +49,13 @@ class HomePage extends StatelessWidget {
     return CustomAppBar(
         height: 85.v,
         title: AppbarSubtitle(
-            text: "msg_find_your_desire".tr,
+            text: AppLocalizations.of(context)!.find_your_desire,
             margin: EdgeInsets.only(left: 24.h)),
         actions: [
           AppbarTrailingImage(
+            onTap: () {
+              debugPrint("Home screen Logo Pressed !!");
+            },
             imagePath: ImageConstant.appLogo,
             margin: EdgeInsets.fromLTRB(24.h, 5.v, 24.h, 29.v),
           )
@@ -60,7 +65,7 @@ class HomePage extends StatelessWidget {
   /// Section Widget
   Widget _buildCategories(BuildContext context) {
     return SizedBox(
-        height: 83.v,
+        height: 92.v,
         child: ListView.separated(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
@@ -88,7 +93,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     SizedBox(
                         width: 146.h,
-                        child: Text("msg_early_protection".tr,
+                        child: Text(
+                            AppLocalizations.of(context)!.early_protection,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: CustomTextStyles.titleMediumWhiteA700
@@ -97,7 +103,8 @@ class HomePage extends StatelessWidget {
                     CustomElevatedButton(
                         height: 30.v,
                         width: 98.h,
-                        text: "lbl_book_now".tr, // book now
+                        text: AppLocalizations.of(context)!
+                            .lbl_book_now, // book now
                         buttonStyle: CustomButtonStyles.fillWhiteA,
                         buttonTextStyle: CustomTextStyles.labelLargePrimary,
                         onPressed: () {
@@ -139,7 +146,7 @@ class HomePage extends StatelessWidget {
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Padding(
             padding: EdgeInsets.only(top: 1.v),
-            child: Text("lbl_top_barbers".tr,
+            child: Text(AppLocalizations.of(context)!.lbl_top_barbers,
                 style: CustomTextStyles.titleMedium16)),
         GestureDetector(
             onTap: () {
@@ -148,7 +155,7 @@ class HomePage extends StatelessWidget {
             },
             child: Padding(
                 padding: EdgeInsets.only(bottom: 3.v),
-                child: Text("lbl_see_all".tr,
+                child: Text(AppLocalizations.of(context)!.lbl_see_all,
                     style: CustomTextStyles.titleSmallPrimary)))
       ]),
       SizedBox(height: 16.v),

@@ -30,8 +30,8 @@ class ChatWithDoctorScreen extends StatelessWidget {
                       _buildConsultationStart(context),
                       SizedBox(height: 20.v),
                       _buildCloseRow(context,
-                          doctorName: "msg_dr_marcus_horizon".tr,
-                          timeAgo: "lbl_10_min_ago".tr),
+                          doctorName: AppLocalizations.of(context)!.dr_marcus_horizon,
+                          timeAgo: AppLocalizations.of(context)!.lbl_10_min_ago),
                       SizedBox(height: 10.v),
                       Container(
                           margin: EdgeInsets.only(right: 122.h),
@@ -44,18 +44,18 @@ class ChatWithDoctorScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(height: 4.v),
-                                Text("msg_hello_how_can_i".tr,
+                                Text(AppLocalizations.of(context)!.hello_how_can_i,
                                     style: theme.textTheme.bodyMedium)
                               ])),
                       SizedBox(height: 15.v),
                       Padding(
                           padding: EdgeInsets.only(left: 90.h),
                           child: _buildChatTileRow(context,
-                              dynamicText: "msg_i_have_suffering".tr)),
+                              dynamicText: AppLocalizations.of(context)!.i_have_suffering)),
                       SizedBox(height: 15.v),
                       _buildCloseRow(context,
-                          doctorName: "msg_dr_marcus_horizon".tr,
-                          timeAgo: "lbl_5_min_ago".tr),
+                          doctorName: AppLocalizations.of(context)!.dr_marcus_horizon,
+                          timeAgo: AppLocalizations.of(context)!.lbl_5_min_ago),
                       SizedBox(height: 10.v),
                       Container(
                           width: 221.h,
@@ -67,7 +67,7 @@ class ChatWithDoctorScreen extends StatelessWidget {
                           child: Container(
                               width: 186.h,
                               margin: EdgeInsets.only(right: 9.h),
-                              child: Text("msg_ok_do_you_have".tr,
+                              child: Text(AppLocalizations.of(context)!.ok_do_you_have,
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: theme.textTheme.bodyMedium!
@@ -76,11 +76,11 @@ class ChatWithDoctorScreen extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(left: 90.h),
                           child: _buildChatTileRow(context,
-                              dynamicText: "msg_i_don_t_have_any".tr)),
+                              dynamicText: AppLocalizations.of(context)!.i_don_t_have_any)),
                       SizedBox(height: 15.v),
                       _buildCloseRow(context,
-                          doctorName: "msg_dr_marcus_horizon".tr,
-                          timeAgo: "lbl_online".tr),
+                          doctorName: AppLocalizations.of(context)!.dr_marcus_horizon,
+                          timeAgo: AppLocalizations.of(context)!.lbl_online),
                       SizedBox(height: 10.v),
                       Container(
                           height: 22.v,
@@ -109,7 +109,7 @@ class ChatWithDoctorScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         title: AppbarSubtitleThree(
-            text: "msg_dr_marcus_horizon".tr,
+            text: AppLocalizations.of(context)!.dr_marcus_horizon,
             margin: EdgeInsets.only(left: 9.h)),
         actions: [
           AppbarTrailingImage(
@@ -140,10 +140,10 @@ class ChatWithDoctorScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("msg_consultion_start".tr,
+              Text(AppLocalizations.of(context)!.consultion_start,
                   style: CustomTextStyles.titleMediumPrimary),
               SizedBox(height: 8.v),
-              Text("msg_you_can_consult".tr, style: theme.textTheme.labelLarge)
+              Text(AppLocalizations.of(context)!.you_can_consult, style: theme.textTheme.labelLarge)
             ]));
   }
 
@@ -155,7 +155,7 @@ class ChatWithDoctorScreen extends StatelessWidget {
           CustomTextFormField(
               width: 207.h,
               controller: messageController,
-              hintText: "msg_type_message".tr,
+              hintText: AppLocalizations.of(context)!.type_message,
               hintStyle: CustomTextStyles.bodyMediumGray500,
               textInputAction: TextInputAction.done,
               suffix: Container(
@@ -173,7 +173,7 @@ class ChatWithDoctorScreen extends StatelessWidget {
           CustomElevatedButton(
               height: 50.v,
               width: 111.h,
-              text: "lbl_send".tr,
+              text: AppLocalizations.of(context)!.lbl_send,
               margin: EdgeInsets.only(left: 9.h),
               buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1)
         ]));

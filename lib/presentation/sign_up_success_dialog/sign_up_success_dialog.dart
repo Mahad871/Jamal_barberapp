@@ -34,11 +34,11 @@ class SignUpSuccessDialog extends StatelessWidget {
                         radius: BorderRadius.circular(3.h),
                         alignment: Alignment.center)),
                 SizedBox(height: 43.v),
-                Text("lbl_success".tr, style: theme.textTheme.titleLarge),
+                Text(AppLocalizations.of(context)!.lbl_success, style: theme.textTheme.titleLarge),
                 SizedBox(height: 6.v),
                 SizedBox(
                     width: 172.h,
-                    child: Text("msg_your_account_has".tr,
+                    child: Text(AppLocalizations.of(context)!.your_account_has,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
@@ -46,7 +46,7 @@ class SignUpSuccessDialog extends StatelessWidget {
                             .copyWith(height: 1.50))),
                 SizedBox(height: 22.v),
                 CustomElevatedButton(
-                    text: "lbl_go_to_home".tr,
+                    text: AppLocalizations.of(context)!.lbl_go_to_home,
                     onPressed: () {
                       Navigator.pushNamed(
                           context, AppRoutes.homeContainerScreen);

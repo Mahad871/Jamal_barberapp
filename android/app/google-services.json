@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "802643790860",
+    "project_id": "jamal-a0429",
+    "storage_bucket": "jamal-a0429.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802643790860:android:008f3f247e3874fa9b3229",
+        "android_client_info": {
+          "package_name": "com.mahadsapplication.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802643790860-6e26m4o5veplq45sk4h6dngi4o8pinog.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mahadsapplication.app",
+            "certificate_hash": "714d6f66835b664648ad8aff6ca39f69a8d987c7"
+          }
+        },
+        {
+          "client_id": "802643790860-081h1uhgff9f3p0djb36cuuikcsijc8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbGpJIap5RurRSdLF5AVFlNJhIJxdZE9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802643790860-081h1uhgff9f3p0djb36cuuikcsijc8m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802643790860-r3jeod3hf3fk2nfii1o1av7es2ib5mud.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mahadsapplication.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,15 @@
+import 'package:mahad_s_application3/controllers/language_controller.dart';
+import 'package:provider/provider.dart';
+
 import '../profile_page/widgets/profilelistsection_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/widgets/custom_icon_button.dart';
+
+enum LanguageEnum {
+  English,
+  Arabic,
+}
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -60,7 +68,7 @@ class ProfilePage extends StatelessWidget {
                                       SizedBox(height: 14.v),
                                       Divider(),
                                       SizedBox(height: 14.v),
-                                      _buildFaqsSection(context),
+                                      _buildLanguageSection(context),
                                       SizedBox(height: 14.v),
                                       Divider(),
                                       SizedBox(height: 14.v),
@@ -223,7 +231,8 @@ class ProfilePage extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildFaqsSection(BuildContext context) {
+  Widget _buildLanguageSection(BuildContext context) {
+    LanguageEnum? selectedMenu;
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       SizedBox(
           height: 48.v,
@@ -248,11 +257,36 @@ class ProfilePage extends StatelessWidget {
           child: Text(AppLocalizations.of(context)!.lbl_faqs,
               style: CustomTextStyles.titleMedium16)),
       Spacer(),
-      CustomImageView(
-          imagePath: ImageConstant.imgArrowRight,
-          height: 26.v,
-          width: 24.h,
-          margin: EdgeInsets.only(top: 11.v, bottom: 10.v))
+      Consumer<LanguageController>(builder: (context, provider, child) {
+        return PopupMenuButton<LanguageEnum>(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.h),
+            side: BorderSide(
+                color: CustomColorScheme.primaryColorScheme.primary,
+                width: 1.h),
+          ),
+          initialValue: selectedMenu,
+          // Callback that sets the selected popup menu item.
+          onSelected: (LanguageEnum item) {
+            if (LanguageEnum.English == item) {
+              provider.changeLanguage(const Locale('en'));
+            } else {
+              provider.changeLanguage(const Locale('ar'));
+            }
+            // provider.changeLanguage(const Locale('en'));
+          },
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<LanguageEnum>>[
+            const PopupMenuItem<LanguageEnum>(
+              value: LanguageEnum.English,
+              child: Text('English'),
+            ),
+            const PopupMenuItem<LanguageEnum>(
+              value: LanguageEnum.Arabic,
+              child: Text('العربية'),
+            ),
+          ],
+        );
+      }),
     ]);
   }
 

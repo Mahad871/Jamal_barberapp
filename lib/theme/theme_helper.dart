@@ -13,7 +13,7 @@ class ThemeHelper {
 
 // A map of color schemes supported by the app
   Map<String, ColorScheme> _supportedColorScheme = {
-    'primary': ColorSchemes.primaryColorScheme
+    'primary': CustomColorScheme.primaryColorScheme
   };
 
   /// Changes the app theme to [_newTheme].
@@ -42,8 +42,8 @@ class ThemeHelper {
     }
     //return theme from map
 
-    var colorScheme =
-        _supportedColorScheme[_appTheme] ?? ColorSchemes.primaryColorScheme;
+    var colorScheme = _supportedColorScheme[_appTheme] ??
+        CustomColorScheme.primaryColorScheme;
     return ThemeData(
       snackBarTheme: SnackBarThemeData(
         backgroundColor: colorScheme.primary,
@@ -189,7 +189,7 @@ class TextThemes {
 }
 
 /// Class containing the supported color schemes.
-class ColorSchemes {
+class CustomColorScheme {
   static final primaryColorScheme = ColorScheme.light(
     // Primary colors
     primary: Color(0XFFD95CF1),

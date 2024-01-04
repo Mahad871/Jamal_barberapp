@@ -26,46 +26,43 @@ class DoctorItemWidget extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerRight,
-            child: Flexible(
-              child: Container(
-                margin: EdgeInsets.only(right: 1.h),
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.imgEllipse88,
-                      height: 71.adaptSize,
-                      width: 71.adaptSize,
-                      radius: BorderRadius.circular(
-                        35.h,
-                      ),
-                      alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.only(right: 1.h),
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  CustomImageView(
+                    imagePath: ImageConstant.imgEllipse88,
+                    height: 71.adaptSize,
+                    width: 71.adaptSize,
+                    radius: BorderRadius.circular(
+                      35.h,
                     ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.imgStar,
-                            height: 16.adaptSize,
-                            width: 16.adaptSize,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomImageView(
+                          imagePath: ImageConstant.imgStar,
+                          height: 16.adaptSize,
+                          width: 16.adaptSize,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 4.h),
+                          child: Text(
+                            AppLocalizations.of(context)!.lbl_4_7,
+                            style: CustomTextStyles.labelLargeAmber500SemiBold,
+                            softWrap: true,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 4.h),
-                            child: Text(
-                              AppLocalizations.of(context)!.lbl_4_7,
-                              style:
-                                  CustomTextStyles.labelLargeAmber500SemiBold,
-                              softWrap: true,
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

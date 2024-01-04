@@ -154,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             gravity: ToastGravity.SNACKBAR,
                             timeInSecForIosWeb: 1,
                             backgroundColor:
-                                ColorSchemes.primaryColorScheme.primary,
+                                CustomColorScheme.primaryColorScheme.primary,
                             textColor: Colors.white,
                             fontSize: 16.0);
                         Navigator.pushReplacementNamed(
@@ -270,7 +270,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   toastLength: Toast.LENGTH_SHORT,
                   gravity: ToastGravity.SNACKBAR,
                   timeInSecForIosWeb: 1,
-                  backgroundColor: ColorSchemes.primaryColorScheme.primary,
+                  backgroundColor: CustomColorScheme.primaryColorScheme.primary,
                   textColor: Colors.white,
                   fontSize: 16.0);
               Navigator.pushNamed(

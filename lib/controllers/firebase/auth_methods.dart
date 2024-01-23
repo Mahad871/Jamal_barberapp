@@ -9,6 +9,7 @@ import 'package:mahad_s_application3/dependencyInjection/injection_container.dar
 import 'package:mahad_s_application3/models/user_model.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mahad_s_application3/providers/user_provider.dart';
 
 class AuthMethods extends ChangeNotifier {
   final db = FirebaseFirestore.instance;
@@ -28,6 +29,7 @@ class AuthMethods extends ChangeNotifier {
       print(e);
       return false;
     }
+    currentUserData=user;
     notifyListeners();
     return true;
   }
@@ -63,8 +65,8 @@ class AuthMethods extends ChangeNotifier {
             .collection('users')
             .doc(authResult.user!.uid)
             .set(user.toJson());
+        currentUserData = user;
       }
-
       return true;
     } catch (e) {
       print(e);

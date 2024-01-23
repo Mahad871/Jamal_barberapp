@@ -13,14 +13,14 @@ import 'package:mahad_s_application3/widgets/custom_outlined_button.dart';
 import 'package:mahad_s_application3/widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
-class SignUpScreen extends StatefulWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+class AddShopScreen extends StatefulWidget {
+  AddShopScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<AddShopScreen> createState() => _AddShopScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen>
+class _AddShopScreenState extends State<AddShopScreen>
     with TickerProviderStateMixin {
   TextEditingController nameEditTextController = TextEditingController();
 
@@ -67,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                           ),
                           SizedBox(height: 25.v),
 
-                          _buildTabview(context),
+                          // _buildTabview(context),
                           SizedBox(height: 25.v),
                           _buildNameEditText(context),
                           SizedBox(height: 16.v),
@@ -79,7 +79,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                           SizedBox(height: 29.v),
                           CustomElevatedButton(
                               isLoading: this.isloading,
-                              text: AppLocalizations.of(context)!.lbl_sign_up,
+                              text: AppLocalizations.of(context)!.lbl_add_shop,
                               onPressed: () async {
                                 setState(() {
                                   this.isloading = true;
@@ -117,71 +117,47 @@ class _SignUpScreenState extends State<SignUpScreen>
                                 }
                               }),
                           SizedBox(height: 26.v),
-                          Padding(
-                            padding: EdgeInsets.only(left: 44.h),
-                            child: Row(
-                              children: [
-                                Text(
-                                    AppLocalizations.of(context)!
-                                        .already_have_an,
-                                    style: CustomTextStyles.bodyMediumGray600),
-                                GestureDetector(
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, AppRoutes.loginScreen);
-                                    },
-                                    child: Padding(
-                                        padding: EdgeInsets.only(left: 4.h),
-                                        child: Text(
-                                            AppLocalizations.of(context)!
-                                                .lbl_log_in2,
-                                            style: CustomTextStyles
-                                                .titleSmallPrimary_1)))
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 5.v),
-                          _buildDivider(context),
-                          SizedBox(height: 5.v),
-                          InkWell(
-                            enableFeedback: true,
-                            child: CustomOutlinedButton(
-                              text: AppLocalizations.of(context)!
-                                  .sign_up_with_google,
-                              onPressed: () async {
-                                if (tabviewController.index == 0) {
-                                  isBarber = false;
-                                } else if (tabviewController.index == 1) {
-                                  isBarber = true;
-                                }
-                                bool condition = await sl
-                                    .get<AuthMethods>()
-                                    .signUpWithGoogle(isBarber: isBarber);
-                                if (condition) {
-                                  Navigator.pushNamed(
-                                      context, AppRoutes.signUpSuccessScreen);
-                                } else {
-                                  Fluttertoast.showToast(
-                                    msg: "Sign up failed",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.BOTTOM,
-                                    backgroundColor: Colors.red,
-                                    textColor: Colors.white,
-                                  );
-                                }
 
-                                // print('pressed !!!!!!!!');
-                              },
-                              leftIcon: Container(
-                                margin: EdgeInsets.only(right: 30.h),
-                                child: CustomImageView(
-                                  imagePath: ImageConstant.imgGoogle,
-                                  height: 20.v,
-                                  width: 19.h,
-                                ),
-                              ),
-                            ),
-                          ),
+                          SizedBox(height: 5.v),
+                          // InkWell(
+                          //   enableFeedback: true,
+                          //   child: CustomOutlinedButton(
+                          //     text: AppLocalizations.of(context)!
+                          //         .sign_up_with_google,
+                          //     onPressed: () async {
+                          //       if (tabviewController.index == 0) {
+                          //         isBarber = false;
+                          //       } else if (tabviewController.index == 1) {
+                          //         isBarber = true;
+                          //       }
+                          //       bool condition = await sl
+                          //           .get<AuthMethods>()
+                          //           .signUpWithGoogle(isBarber: isBarber);
+                          //       if (condition) {
+                          //         Navigator.pushNamed(
+                          //             context, AppRoutes.signUpSuccessScreen);
+                          //       } else {
+                          //         Fluttertoast.showToast(
+                          //           msg: "Sign up failed",
+                          //           toastLength: Toast.LENGTH_SHORT,
+                          //           gravity: ToastGravity.BOTTOM,
+                          //           backgroundColor: Colors.red,
+                          //           textColor: Colors.white,
+                          //         );
+                          //       }
+
+                          //       // print('pressed !!!!!!!!');
+                          //     },
+                          //     leftIcon: Container(
+                          //       margin: EdgeInsets.only(right: 30.h),
+                          //       child: CustomImageView(
+                          //         imagePath: ImageConstant.imgGoogle,
+                          //         height: 20.v,
+                          //         width: 19.h,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ])))));
   }
 
@@ -196,7 +172,8 @@ class _SignUpScreenState extends State<SignUpScreen>
       //       Navigator.pop(context);
       //     }),
       centerTitle: true,
-      title: AppbarSubtitleTwo(text: AppLocalizations.of(context)!.lbl_sign_up),
+      title:
+          AppbarSubtitleTwo(text: AppLocalizations.of(context)!.lbl_add_shop),
     );
   }
 

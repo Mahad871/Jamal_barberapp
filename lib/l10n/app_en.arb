@@ -39,6 +39,7 @@
   "create_your_new": "Create your new password to login",
   "enter_new_password": "Enter new password",
   "lbl_barber": "Barber",
+  "lbl_User": "User",
   "lbl_hospital": "Hospital",
   "lbl_book_now": "Book Now",
   "early_protection": "Style for Everyone",
@@ -189,6 +190,8 @@
   "lbl_heart_rate": "Heart rate",
   "lbl_logout": "Logout",
   "lbl_my_saved": "My Saved",
+  "lbl_my_shpos": "My Shops",
+  "lbl_add_shop": "Add Shop",
   "lbl_weight": "Weight",
   "lbl_00_05_24": "00:05:24",
   "lbl_1": "1",
@@ -234,4 +237,5 @@
   "please_enter_correct_email_and_password": "Please enter correct email or password",
   "please_enter_valid_username_email_password": "Please enter valid username, email or password",
   "sign_up_failed": "Sign up failed"
+
 }

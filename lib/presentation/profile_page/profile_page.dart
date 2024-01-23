@@ -1,3 +1,4 @@
+import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
 import 'package:mahad_s_application3/controllers/language_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -38,42 +39,51 @@ class ProfilePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(height: 44.v),
-                          Expanded(child: _buildProfileSection(context)),
+                          Expanded(
+                              flex: 2, child: _buildProfileSection(context)),
                           SizedBox(height: 27.v),
                           // _buildProfileListSection(context),
                           // SizedBox(height: 38.v),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            physics: BouncingScrollPhysics(),
-                            child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20.h, vertical: 29.v),
-                                decoration: AppDecoration.white.copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.customBorderTL30),
-                                child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: 5.v),
-                                      _buildMySaveSection(context),
-                                      SizedBox(height: 14.v),
-                                      Divider(),
-                                      SizedBox(height: 14.v),
-                                      _buildAppointmentSection(context),
-                                      SizedBox(height: 14.v),
-                                      Divider(),
-                                      SizedBox(height: 14.v),
-                                      _buildPaymentSection(context),
-                                      SizedBox(height: 14.v),
-                                      Divider(),
-                                      SizedBox(height: 14.v),
-                                      _buildLanguageSection(context),
-                                      SizedBox(height: 14.v),
-                                      Divider(),
-                                      SizedBox(height: 14.v),
-                                      _buildLogoutSection(context)
-                                    ])),
+                          Expanded(
+                            flex: 5,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              physics: BouncingScrollPhysics(),
+                              child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20.h, vertical: 29.v),
+                                  decoration: AppDecoration.white.copyWith(
+                                      borderRadius:
+                                          BorderRadiusStyle.customBorderTL30),
+                                  child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: 5.v),
+                                        _buildMyShopsSection(context),
+                                        SizedBox(height: 14.v),
+                                        Divider(),
+                                        SizedBox(height: 14.v),
+                                        _buildMySaveSection(context),
+                                        SizedBox(height: 14.v),
+                                        Divider(),
+                                        SizedBox(height: 14.v),
+                                        _buildAppointmentSection(context),
+                                        SizedBox(height: 14.v),
+                                        Divider(),
+                                        SizedBox(height: 14.v),
+                                        _buildPaymentSection(context),
+                                        SizedBox(height: 14.v),
+                                        Divider(),
+                                        SizedBox(height: 14.v),
+                                        _buildLanguageSection(context),
+                                        SizedBox(height: 14.v),
+                                        Divider(),
+                                        SizedBox(height: 14.v),
+                                        _buildLogoutSection(context)
+                                      ])),
+                            ),
                           )
                         ])))));
   }
@@ -100,7 +110,7 @@ class ProfilePage extends StatelessWidget {
                 child: CustomImageView(imagePath: ImageConstant.imgCamera))
           ])),
       SizedBox(height: 19.v),
-      Text(AppLocalizations.of(context)!.lbl_amelia_renata,
+      Text(sl.get<AuthMethods>().currentUserData!.username ?? 'Username',
           style: CustomTextStyles.titleMediumWhiteA700_1)
     ]);
   }
@@ -126,6 +136,46 @@ class ProfilePage extends StatelessWidget {
             itemBuilder: (context, index) {
               return ProfilelistsectionItemWidget();
             }));
+  }
+
+  Widget _buildMyShopsSection(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context, rootNavigator: true)
+            .pushNamed(AppRoutes.myShopsScreen);
+      },
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        SizedBox(
+            height: 48.v,
+            width: 43.h,
+            child: Stack(alignment: Alignment.center, children: [
+              Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                      height: 48.v,
+                      width: 43.h,
+                      decoration: BoxDecoration(
+                          color: theme.colorScheme.onErrorContainer,
+                          borderRadius: BorderRadius.circular(24.h)))),
+              CustomImageView(
+                  imagePath: ImageConstant.storeLogo,
+                  height: 26.v,
+                  width: 24.h,
+                  color: Color.fromRGBO(34, 125, 222, 1),
+                  alignment: Alignment.center)
+            ])),
+        Padding(
+            padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
+            child: Text(AppLocalizations.of(context)!.lbl_my_shpos,
+                style: CustomTextStyles.titleMedium16)),
+        Spacer(),
+        CustomImageView(
+            imagePath: ImageConstant.imgArrowRight,
+            height: 26.v,
+            width: 24.h,
+            margin: EdgeInsets.only(top: 11.v, bottom: 10.v))
+      ]),
+    );
   }
 
   /// Section Widget

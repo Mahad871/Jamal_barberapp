@@ -6,8 +6,8 @@ import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_two.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
 
-class TopDoctorScreen extends StatelessWidget {
-  const TopDoctorScreen({Key? key}) : super(key: key);
+class TopBarbers extends StatelessWidget {
+  const TopBarbers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -28,6 +28,7 @@ dependencies:
   fluttertoast: ^8.2.4
   geolocator: ^10.1.0
   shared_preferences: ^2.2.2
+  # flutter_stripe: ^9.5.0+1
 
   # firebase: ^10.3.0 # Add this line for Firebase web dependency
 

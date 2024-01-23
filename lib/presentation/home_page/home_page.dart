@@ -1,3 +1,5 @@
+import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
+
 import '../home_page/widgets/categories_item_widget.dart';
 import '../home_page/widgets/doctor_item_widget.dart';
 import 'package:flutter/material.dart';

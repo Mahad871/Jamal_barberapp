@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:mahad_s_application3/presentation/my_shops/add_shop_screen.dart';
+import 'package:mahad_s_application3/presentation/my_shops/my_shops_screen.dart';
+import 'package:mahad_s_application3/presentation/my_shops/widgets/my_shop_details_screen.dart';
+import 'package:mahad_s_application3/presentation/onBoarding/onboarding_four_screen/onboarding_four_screen.dart';
+import 'package:mahad_s_application3/presentation/onBoarding/onboarding_one_screen/onboarding_one_screen.dart';
+import 'package:mahad_s_application3/presentation/onBoarding/onboarding_three_screen/onboarding_three_screen.dart';
+import 'package:mahad_s_application3/presentation/onBoarding/onboarding_two_screen/onboarding_two_screen.dart';
 import 'package:mahad_s_application3/presentation/profile_page/profile_page.dart';
 import 'package:mahad_s_application3/presentation/sign_up_success_dialog/sign_up_success_dialog.dart';
 import 'package:mahad_s_application3/presentation/splash_screen/splash_screen.dart';
-import 'package:mahad_s_application3/presentation/onboarding_one_screen/onboarding_one_screen.dart';
-import 'package:mahad_s_application3/presentation/onboarding_two_screen/onboarding_two_screen.dart';
-import 'package:mahad_s_application3/presentation/onboarding_three_screen/onboarding_three_screen.dart';
-import 'package:mahad_s_application3/presentation/onboarding_four_screen/onboarding_four_screen.dart';
 import 'package:mahad_s_application3/presentation/login_screen/login_screen.dart';
 import 'package:mahad_s_application3/presentation/sign_up_screen/sign_up_screen.dart';
 import 'package:mahad_s_application3/presentation/reset_password_tab_container_screen/reset_password_tab_container_screen.dart';
@@ -45,6 +48,10 @@ class AppRoutes {
   static const String homePage = '/home_page';
   static const String homeContainerScreen = '/home_container_screen';
   static const String topDoctorScreen = '/top_doctor_screen';
+  static const String myShopsScreen = '/my_shops_screen';
+  static const String myShopDetailsScreen = '/my_shops_details_screen';
+  static const String addShopScreen = '/add_shop_screen';
+
   static const String findDoctorsScreen = '/find_doctors_screen';
   static const String doctorDetailScreen = '/doctor_detail_screen';
   static const String bookingDoctorScreen = '/booking_doctor_screen';
@@ -78,7 +85,7 @@ class AppRoutes {
     resetPasswordVerifyCodeScreen: (context) => ResetPasswordVerifyCodeScreen(),
     createNewPasswordScreen: (context) => CreateNewPasswordScreen(),
     homeContainerScreen: (context) => HomeContainerScreen(),
-    topDoctorScreen: (context) => TopDoctorScreen(),
+    topDoctorScreen: (context) => TopBarbers(),
     findDoctorsScreen: (context) => FindDoctorsScreen(),
     doctorDetailScreen: (context) => DoctorDetailScreen(),
     bookingDoctorScreen: (context) => BookingDoctorScreen(),
@@ -86,12 +93,15 @@ class AppRoutes {
     // audioCallScreen: (context) => AudioCallScreen(),
     // videoCallScreen: (context) => VideoCallScreen(),
     // articlesScreen: (context) => ArticlesScreen(),
-    // pharmacyScreen: (context) => PharmacyScreen(),
+    pharmacyScreen: (context) => PharmacyScreen(),
     // drugsDetailScreen: (context) => DrugsDetailScreen(),
     myCartScreen: (context) => MyCartScreen(),
     locationScreen: (context) => LocationScreen(),
     appNavigationScreen: (context) => AppNavigationScreen(),
     profilePage: (context) => ProfilePage(),
+    myShopsScreen: (context) => MyShopsScreen(),
+    myShopDetailsScreen: (context) => MyShopDetailsItem(),
+    addShopScreen: (context) => AddShopScreen(),
   };
 
   static WidgetBuilder getSplashScreen() => routes[splashScreen]!;
@@ -111,6 +121,7 @@ class AppRoutes {
       routes[createNewPasswordScreen]!;
   static WidgetBuilder getHomeContainerScreen() => routes[homeContainerScreen]!;
   static WidgetBuilder getTopDoctorScreen() => routes[topDoctorScreen]!;
+  static WidgetBuilder getMyShopsScreen() => routes[myShopsScreen]!;
   static WidgetBuilder getFindDoctorsScreen() => routes[findDoctorsScreen]!;
   static WidgetBuilder getDoctorDetailScreen() => routes[doctorDetailScreen]!;
   static WidgetBuilder getBookingDoctorScreen() => routes[bookingDoctorScreen]!;

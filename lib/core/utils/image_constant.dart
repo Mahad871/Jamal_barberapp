@@ -191,6 +191,7 @@ class ImageConstant {
   static String imgSettingsWhiteA700 = '$imagePath/img_settings_white_a700.svg';
 
   static String imgLocationPrimary = '$imagePath/img_location_primary.svg';
+  static String storeLogo = '$imagePath/store.svg';
 
   static String imgArrowRight = '$imagePath/img_arrow_right.svg';
 

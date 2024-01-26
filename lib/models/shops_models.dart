@@ -1,50 +1,16 @@
-// To parse this JSON data, do
-//
-//     final allRestaurants = allRestaurantsFromJson(jsonString);
-
 import 'dart:convert';
 
-AllShops allRestaurantsFromJson(String str) =>
-    AllShops.fromJson(json.decode(str));
-
-String allShopsToJson(AllShops data) => json.encode(data.toJson());
-
-class AllShops {
-  AllShops({
-    required this.result,
-    this.message,
-    this.status,
-  });
-
-  List<ShopDetails> result;
-  String? message;
-  String? status;
-
-  factory AllShops.fromJson(Map<String, dynamic> json) => AllShops(
-        result: List<ShopDetails>.from(
-            json["result"].map((x) => ShopDetails.fromJson(x))),
-        message: json["message"],
-        status: json["status"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "result": List<dynamic>.from(result.map((x) => x.toJson())),
-        "message": message,
-        "status": status,
-      };
-}
-
-// To parse this JSON data, do
-//
-//     final restaurantDetails = restaurantDetailsFromJson(jsonString);
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mahad_s_application3/models/appointments_model.dart';
 
 class ShopDetails {
   ShopDetails({
     this.id,
-    this.restaurantName,
-    this.restaurantImage,
-    this.restaurantMobileNumber,
-    this.restaurantAddress,
+    this.ownerId,
+    this.shopName,
+    this.shopImage,
+    this.shopMobileNumber,
+    this.shopAddress,
     this.lat,
     this.lon,
     this.shopOpen,
@@ -53,8 +19,8 @@ class ShopDetails {
     this.rating,
     this.dateTime,
     this.percentageDiscount,
-    this.startTime,
-    this.endTime,
+    this.openTime,
+    this.closeTime,
     this.quantity,
     this.amount,
     this.discountAmount,
@@ -62,13 +28,15 @@ class ShopDetails {
     this.status,
     this.bagsName,
     this.isWishListed,
+    this.appointments,
   });
 
   String? id;
-  String? restaurantName;
-  String? restaurantImage;
-  String? restaurantMobileNumber;
-  String? restaurantAddress;
+  String? ownerId;
+  String? shopName;
+  String? shopImage;
+  String? shopMobileNumber;
+  String? shopAddress;
   String? lat;
   String? lon;
   String? shopOpen;
@@ -77,8 +45,8 @@ class ShopDetails {
   String? rating;
   DateTime? dateTime;
   String? percentageDiscount;
-  String? startTime;
-  String? endTime;
+  String? openTime;
+  String? closeTime;
   String? quantity;
   String? amount;
   String? discountAmount;
@@ -87,36 +55,73 @@ class ShopDetails {
   String? bagsName;
   bool? isWishListed;
 
-  factory ShopDetails.fromJson(Map<String, dynamic> json) => ShopDetails(
-        id: json["id"],
-        restaurantName: json["shop_name"],
-        restaurantImage: json["shop_image"],
-        restaurantMobileNumber: json["shop_mobile_number"],
-        restaurantAddress: json["shop_address"],
-        lat: json["lat"],
-        lon: json["lon"],
-        shopOpen: json["shop_open"],
-        shopClose: json["shop_close"],
-        description: json["description"],
-        rating: json["rating"],
-        dateTime: DateTime.parse(json["date_time"]),
-        percentageDiscount: json["percentage_discount"],
-        startTime: json["start_time"],
-        endTime: json["end_time"],
-        quantity: json["quantity"],
-        amount: json["amount"],
-        discountAmount: json["discount_amount"],
-        afterDiscountAmount: json["after_discount_amount"],
-        status: json["status"],
-        bagsName: json["bags_name"],
-      );
+  List<Appointment>? appointments = [];
+
+  factory ShopDetails.fromMap(Map<String, dynamic> json) => ShopDetails(
+      id: json["id"],
+      ownerId: json["owner_id"],
+      shopName: json["shop_name"],
+      shopImage: json["shop_image"],
+      shopMobileNumber: json["shop_mobile_number"],
+      shopAddress: json["shop_address"],
+      lat: json["lat"],
+      lon: json["lon"],
+      shopOpen: json["shop_open"],
+      shopClose: json["shop_close"],
+      description: json["description"],
+      rating: json["rating"],
+      dateTime: DateTime.parse(json["date_time"]),
+      percentageDiscount: json["percentage_discount"],
+      openTime: json["open_time"],
+      closeTime: json["close_time"],
+      quantity: json["quantity"],
+      amount: json["amount"],
+      discountAmount: json["discount_amount"],
+      afterDiscountAmount: json["after_discount_amount"],
+      status: json["status"],
+      bagsName: json["bags_name"],
+      appointments: List<Appointment>.from(
+        json['appointments']?.map((dynamic x) => Appointment.fromMap(x)),
+      ));
+  factory ShopDetails.fromDocumentSnapshot(DocumentSnapshot snapshot) {
+    Map<String, dynamic> json = snapshot.data() as Map<String, dynamic>;
+
+    return ShopDetails(
+      id: json["id"],
+      ownerId: json["owner_id"],
+      shopName: json["shop_name"],
+      shopImage: json["shop_image"],
+      shopMobileNumber: json["shop_mobile_number"],
+      shopAddress: json["shop_address"],
+      lat: json["lat"],
+      lon: json["lon"],
+      shopOpen: json["shop_open"],
+      shopClose: json["shop_close"],
+      description: json["description"],
+      rating: json["rating"],
+      dateTime: DateTime.parse(json["date_time"]),
+      percentageDiscount: json["percentage_discount"],
+      openTime: json["open_time"],
+      closeTime: json["close_time"],
+      quantity: json["quantity"],
+      amount: json["amount"],
+      discountAmount: json["discount_amount"],
+      afterDiscountAmount: json["after_discount_amount"],
+      status: json["status"],
+      bagsName: json["bags_name"],
+      appointments: List<Appointment>.from(
+        json['appointments']?.map((dynamic x) => Appointment.fromMap(x)),
+      ),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "shop_name": restaurantName,
-        "shop_image": restaurantImage,
-        "shop_mobile_number": restaurantMobileNumber,
-        "shop_address": restaurantAddress,
+        "owner_id": ownerId,
+        "shop_name": shopName,
+        "shop_image": shopImage,
+        "shop_mobile_number": shopMobileNumber,
+        "shop_address": shopAddress,
         "lat": lat,
         "lon": lon,
         "shop_open": shopOpen,
@@ -125,13 +130,16 @@ class ShopDetails {
         "rating": rating,
         "date_time": dateTime?.toIso8601String(),
         "percentage_discount": percentageDiscount,
-        "start_time": startTime,
-        "end_time": endTime,
+        "open_time": openTime,
+        "close_time": closeTime,
         "quantity": quantity,
         "amount": amount,
         "discount_amount": discountAmount,
         "after_discount_amount": afterDiscountAmount,
         "status": status,
         "bags_name": bagsName,
+        "appointments": appointments == null
+            ? []
+            : appointments!.map((e) => e.toJson()).toList(),
       };
 }

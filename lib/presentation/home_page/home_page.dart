@@ -174,7 +174,7 @@ class HomePage extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 Navigator.of(context, rootNavigator: true)
-                    .pushNamed(AppRoutes.bookingDoctorScreen);
+                    .pushNamed(AppRoutes.doctorDetailScreen);
               },
               child: DoctorItemWidget(
                   // onTap: () {

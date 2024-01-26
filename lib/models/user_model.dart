@@ -31,6 +31,7 @@ class UserModel {
   factory UserModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     return UserModel(
+        uid: data['uid'],
         username: data['username'],
         email: data['email'],
         password: data['password'],
@@ -43,6 +44,7 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'uid': uid,
       'username': username,
       'email': email,
       'password': password,
@@ -56,6 +58,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
+      uid: map['uid'],
       username: map['username'],
       email: map['email'],
       password: map['password'],

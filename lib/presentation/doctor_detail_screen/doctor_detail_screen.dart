@@ -41,7 +41,8 @@ class DoctorDetailScreen extends StatelessWidget {
               // onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarSubtitleOne(text: AppLocalizations.of(context)!.lbl_details),
+        title:
+            AppbarSubtitleOne(text: AppLocalizations.of(context)!.lbl_details),
         actions: [
           AppbarTrailingImage(
               imagePath: ImageConstant.imgOverflowMenu,
@@ -93,13 +94,15 @@ class DoctorDetailScreen extends StatelessWidget {
                             margin: EdgeInsets.only(bottom: 2.v)),
                         Padding(
                             padding: EdgeInsets.only(left: 3.h),
-                            child: Text(AppLocalizations.of(context)!.lbl_800m_away,
+                            child: Text(
+                                AppLocalizations.of(context)!.lbl_800m_away,
                                 style: theme.textTheme.labelLarge))
                       ])
                     ]))
           ])),
       SizedBox(height: 17.v),
-      Text(AppLocalizations.of(context)!.lbl_about, style: CustomTextStyles.titleMedium16),
+      Text(AppLocalizations.of(context)!.lbl_about,
+          style: CustomTextStyles.titleMedium16),
       SizedBox(height: 8.v),
       SizedBox(
           width: 305.h,
@@ -120,27 +123,33 @@ class DoctorDetailScreen extends StatelessWidget {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         _buildThirtyOne(context,
-            dynamicText1: AppLocalizations.of(context)!.lbl_mon, dynamicText2: AppLocalizations.of(context)!.lbl_21),
+            dynamicText1: AppLocalizations.of(context)!.lbl_mon,
+            dynamicText2: AppLocalizations.of(context)!.lbl_21),
         Padding(
             padding: EdgeInsets.only(left: 12.h),
             child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_tue, dynamicText2: AppLocalizations.of(context)!.lbl_22)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_tue,
+                dynamicText2: AppLocalizations.of(context)!.lbl_22)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_wed, dynamicText2: AppLocalizations.of(context)!.lbl_23)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_wed,
+                dynamicText2: AppLocalizations.of(context)!.lbl_23)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_thu, dynamicText2: AppLocalizations.of(context)!.lbl_24)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_thu,
+                dynamicText2: AppLocalizations.of(context)!.lbl_24)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
             child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_fri, dynamicText2: AppLocalizations.of(context)!.lbl_25)),
+                dynamicText1: AppLocalizations.of(context)!.lbl_fri,
+                dynamicText2: AppLocalizations.of(context)!.lbl_25)),
         Padding(
             padding: EdgeInsets.only(left: 6.h),
             child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_sat, dynamicText2: AppLocalizations.of(context)!.lbl_26))
+                dynamicText1: AppLocalizations.of(context)!.lbl_sat,
+                dynamicText2: AppLocalizations.of(context)!.lbl_26))
       ]),
       SizedBox(height: 32.v),
       Divider(),
@@ -170,7 +179,8 @@ class DoctorDetailScreen extends StatelessWidget {
                   margin: EdgeInsets.only(left: 16.h),
                   buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
                   onPressed: () {
-                    // onTapBookApointment(context);
+                    Navigator.of(context)
+                        .pushNamed(AppRoutes.bookingDoctorScreen);
                   }))
         ]));
   }

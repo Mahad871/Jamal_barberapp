@@ -9,7 +9,7 @@ export 'package:mahad_s_application3/theme/custom_text_style.dart';
 export 'package:mahad_s_application3/theme/theme_helper.dart';
 export 'package:mahad_s_application3/widgets/custom_image_view.dart';
 export '../theme/custom_button_style.dart';
-export 'package:mahad_s_application3/core/utils/date_time_utils.dart';
+export 'package:mahad_s_application3/core/utils/date_time_functions.dart';
 export 'package:mahad_s_application3/dependencyInjection/injection_container.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_gen/gen_l10n/app_localizations.dart';

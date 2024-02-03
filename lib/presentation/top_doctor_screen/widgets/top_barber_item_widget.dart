@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 
 // ignore: must_be_immutable
-class TopdoctorItemWidget extends StatelessWidget {
-  TopdoctorItemWidget({
+class TopBarberItemWidget extends StatelessWidget {
+  TopBarberItemWidget({
     Key? key,
     this.navigateToDoctorDetails,
   }) : super(

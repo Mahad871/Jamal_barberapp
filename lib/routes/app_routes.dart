@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/presentation/my_shops/add_shop_screen.dart';
 import 'package:mahad_s_application3/presentation/my_shops/my_shops_screen.dart';
-import 'package:mahad_s_application3/presentation/my_shops/widgets/my_shop_details_screen.dart';
+import 'package:mahad_s_application3/presentation/my_shops/widgets/my_shop_details_item.dart';
 import 'package:mahad_s_application3/presentation/onBoarding/onboarding_four_screen/onboarding_four_screen.dart';
 import 'package:mahad_s_application3/presentation/onBoarding/onboarding_one_screen/onboarding_one_screen.dart';
 import 'package:mahad_s_application3/presentation/onBoarding/onboarding_three_screen/onboarding_three_screen.dart';
@@ -15,7 +15,7 @@ import 'package:mahad_s_application3/presentation/reset_password_tab_container_s
 import 'package:mahad_s_application3/presentation/reset_password_verify_code_screen/reset_password_verify_code_screen.dart';
 import 'package:mahad_s_application3/presentation/create_new_password_screen/create_new_password_screen.dart';
 import 'package:mahad_s_application3/presentation/home_container_screen/home_container_screen.dart';
-import 'package:mahad_s_application3/presentation/top_doctor_screen/top_doctor_screen.dart';
+import 'package:mahad_s_application3/presentation/top_doctor_screen/top_barber_screen.dart';
 import 'package:mahad_s_application3/presentation/find_doctors_screen/find_doctors_screen.dart';
 import 'package:mahad_s_application3/presentation/doctor_detail_screen/doctor_detail_screen.dart';
 import 'package:mahad_s_application3/presentation/booking_doctor_screen/booking_doctor_screen.dart';
@@ -100,7 +100,7 @@ class AppRoutes {
     appNavigationScreen: (context) => AppNavigationScreen(),
     profilePage: (context) => ProfilePage(),
     myShopsScreen: (context) => MyShopsScreen(),
-    myShopDetailsScreen: (context) => MyShopDetailsItem(),
+    // myShopDetailsScreen: (context) => MyShopDetailsItem(),
     addShopScreen: (context) => AddShopScreen(),
   };
 

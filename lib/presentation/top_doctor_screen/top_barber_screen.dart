@@ -1,4 +1,4 @@
-import '../top_doctor_screen/widgets/topdoctor_item_widget.dart';
+import 'widgets/top_barber_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
@@ -25,7 +25,7 @@ class TopBarbers extends StatelessWidget {
                     },
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return TopdoctorItemWidget(navigateToDoctorDetails: () {
+                      return TopBarberItemWidget(navigateToDoctorDetails: () {
                         Navigator.pushNamed(
                             context, AppRoutes.doctorDetailScreen);
                       });

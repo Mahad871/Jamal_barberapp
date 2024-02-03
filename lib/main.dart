@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:mahad_s_application3/controllers/language_controller.dart';
+import 'package:mahad_s_application3/controllers/services_methods.dart';
+import 'package:mahad_s_application3/controllers/shop_methods.dart';
+import 'package:mahad_s_application3/providers/user_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
@@ -49,6 +52,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => sl.get<LanguageController>()),
+          ChangeNotifierProvider(create: (_) => sl.get<ShopMethods>()),
+          // ChangeNotifierProvider(create: (_) => sl.get<ServicesMethods>()),
+          // ChangeNotifierProvider(create: (_) => sl.get<UserProvider>()),
         ],
         child: Consumer<LanguageController>(
           builder: (context, provider, child) {
@@ -75,7 +81,7 @@ class MyApp extends StatelessWidget {
                 Locale('ar'), // Spanish
               ],
               routes: AppRoutes.routes,
-              initialRoute: AppRoutes.splashScreen,
+              initialRoute: AppRoutes.loginScreen,
             );
           },
         ));

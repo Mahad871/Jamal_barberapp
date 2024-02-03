@@ -13,33 +13,32 @@ class UserModel {
   late bool isOnline;
   final Uint8List? file;
   late int noOfFollowers;
-  late List<ShopDetails>? myShops = [];
   double longitude = 0.0;
   double latitude = 0.0;
 
-  UserModel(
-      {this.uid,
-      required this.username,
-      required this.email,
-      required this.password,
-      required this.bookings,
-      this.isBarber = false,
-      this.isOnline = false,
-      this.file,
-      this.myShops});
+  UserModel({
+    this.uid,
+    required this.username,
+    required this.email,
+    required this.password,
+    required this.bookings,
+    this.isBarber = false,
+    this.isOnline = false,
+    this.file,
+  });
 
   factory UserModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     return UserModel(
-        uid: data['uid'],
-        username: data['username'],
-        email: data['email'],
-        password: data['password'],
-        bookings: data['followers'],
-        isBarber: data['isVendor'],
-        isOnline: data['isOnline'],
-        file: data['file'],
-        myShops: data['my_shops']);
+      uid: data['uid'],
+      username: data['username'],
+      email: data['email'],
+      password: data['password'],
+      bookings: data['followers'],
+      isBarber: data['isVendor'],
+      isOnline: data['isOnline'],
+      file: data['file'],
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -52,7 +51,6 @@ class UserModel {
       'isVendor': isBarber,
       'isOnline': isOnline,
       'file': file,
-      'my_shops': myShops
     };
   }
 
@@ -66,7 +64,6 @@ class UserModel {
       isBarber: map['isVendor'],
       isOnline: map['isOnline'],
       file: map['file'],
-      myShops: map['my_shops'],
     );
   }
 

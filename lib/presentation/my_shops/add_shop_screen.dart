@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
+import 'package:mahad_s_application3/controllers/services_methods.dart';
 import 'package:mahad_s_application3/controllers/shop_methods.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/models/appointments_model.dart';
+import 'package:mahad_s_application3/models/services_model.dart';
 import 'package:mahad_s_application3/models/shops_models.dart';
 import 'package:mahad_s_application3/models/user_model.dart';
+import 'package:mahad_s_application3/presentation/my_shops/add_services.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_two.dart';
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
@@ -33,8 +36,9 @@ class _AddShopScreenState extends State<AddShopScreen>
   TextEditingController addressEditTextController = TextEditingController();
   TextEditingController shopMobileNumberController =
       TextEditingController(); // Add this line
-  TextEditingController servicesEditTextController = TextEditingController();
-  List<String> services = [];
+  TextEditingController serviceNameTextController = TextEditingController();
+  TextEditingController servicePriceTextController = TextEditingController();
+  // List<String> services = [];
 
   Map<String, bool> daysOpen = {
     'Monday': true,
@@ -54,6 +58,38 @@ class _AddShopScreenState extends State<AddShopScreen>
 
   TimeOfDay selectedOpenTime = TimeOfDay.now();
   TimeOfDay selectedCloseTime = TimeOfDay.now();
+  List<ServiceModel> servicesList = [
+    ServiceModel(
+      shopID: '',
+      name: 'Haircut',
+      price: 20,
+    ),
+    ServiceModel(
+      shopID: '',
+      name: 'Shave',
+      price: 15,
+    ),
+    ServiceModel(
+      shopID: '',
+      name: 'Beard Trim',
+      price: 10,
+    ),
+    ServiceModel(
+      shopID: '',
+      name: 'Hair Coloring',
+      price: 30,
+    ),
+    ServiceModel(
+      shopID: '',
+      name: 'Hair Styling',
+      price: 25,
+    ),
+    ServiceModel(
+      shopID: '',
+      name: 'Facial',
+      price: 35,
+    ),
+  ];
 
   Future<void> _selectOpenTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -121,7 +157,8 @@ class _AddShopScreenState extends State<AddShopScreen>
                             _buildMobileNoSection(context),
                             // _buildAgreeCheckBox(context),
                             SizedBox(height: 16.v),
-
+                            _buildServicesSheet(context),
+                            SizedBox(height: 16.v),
                             _buildOpenTimePickerSection(context),
 
                             SizedBox(height: 16.v),
@@ -130,8 +167,6 @@ class _AddShopScreenState extends State<AddShopScreen>
                             SizedBox(height: 16.v),
                             _buildDaysOpenSection(context),
                             SizedBox(height: 16.v),
-
-                            _buildServicesSheet(context),
 
                             SizedBox(height: 16.v),
                             // _buildServicesList(),
@@ -316,7 +351,7 @@ class _AddShopScreenState extends State<AddShopScreen>
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Add Open Days',
+                'Availabale Days',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -355,17 +390,30 @@ class _AddShopScreenState extends State<AddShopScreen>
           print(a.toJson());
         }
 
-        ShopDetails shop = ShopDetails(
-            ownerId: sl.get<AuthMethods>().currentUserData!.uid.toString(),
-            shopName: nameEditTextController.text,
-            description: descreptionEditTextController.text,
-            shopAddress: addressEditTextController.text,
-            shopMobileNumber: shopMobileNumberController.text,
-            openTime: selectedOpenTime.toString(),
-            closeTime: selectedCloseTime.toString(),
-            appointments: appointmentss);
-        Navigator.pop(context);
-        sl.get<ShopMethods>().addShop(shop);
+        ShopModel shop = ShopModel(
+          ownerId: sl.get<AuthMethods>().currentUserData!.uid.toString(),
+          shopName: nameEditTextController.text,
+          description: descreptionEditTextController.text,
+          shopAddress: addressEditTextController.text,
+          shopMobileNumber: shopMobileNumberController.text,
+          openTime: selectedOpenTime.toString(),
+          closeTime: selectedCloseTime.toString(),
+          appointments: appointmentss,
+          daysOpen: daysOpen,
+        );
+        String shopID = await sl.get<ShopMethods>().addShop(shop);
+
+        for (ServiceModel s in servicesList) {
+          s.shopID = shopID;
+          sl.get<ServiceMethods>().addService(s);
+        }
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => AddServicesScreen(
+            shopID: shopID,
+          ),
+        ));
+        Navigator.of(context).pop();
+        // sl.get<ShopMethods>().addShop(shop);
         setState(() {
           this.isloading = false;
         });
@@ -377,12 +425,12 @@ class _AddShopScreenState extends State<AddShopScreen>
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
       leadingWidth: 64.h,
-      // leading: AppbarLeadingImage(
-      //     imagePath: ImageConstant.imgArrowLeft,
-      //     margin: EdgeInsets.only(left: 24.h),
-      //     onTap: () {
-      //       Navigator.pop(context);
-      //     }),
+      leading: AppbarLeadingImage(
+          imagePath: ImageConstant.imgArrowLeft,
+          margin: EdgeInsets.only(left: 24.h),
+          onTap: () {
+            Navigator.pop(context);
+          }),
       centerTitle: true,
       title:
           AppbarSubtitleTwo(text: AppLocalizations.of(context)!.lbl_add_shop),
@@ -392,29 +440,48 @@ class _AddShopScreenState extends State<AddShopScreen>
   _buildServicesField(BuildContext context, StateSetter setModalState) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
+      child: Column(
         children: [
-          Expanded(
-            flex: 4,
-            child: CustomTextFormField(
-                controller: servicesEditTextController,
-                hintText: "  Services",
-                prefixConstraints: BoxConstraints(maxHeight: 56.v),
-                contentPadding:
-                    EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
+          CustomTextFormField(
+              controller: serviceNameTextController,
+              textInputAction: TextInputAction.done,
+              hintText: "  Name",
+              prefixConstraints: BoxConstraints(maxHeight: 56.v),
+              contentPadding:
+                  EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
+          Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: CustomTextFormField(
+                    controller: servicePriceTextController,
+                    textInputType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    hintText: "  price",
+                    prefixConstraints: BoxConstraints(maxHeight: 56.v),
+                    contentPadding:
+                        EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
+              ),
+              SizedBox(width: 16.h),
+              Expanded(
+                flex: 1,
+                child: CustomElevatedButton(
+                    text: 'Add',
+                    onPressed: () {
+                      setModalState(() {
+                        ServiceModel serviceModel = ServiceModel(
+                            shopID: '',
+                            name: serviceNameTextController.text,
+                            price:
+                                double.parse(servicePriceTextController.text));
+                        servicesList.add(serviceModel);
+                        serviceNameTextController.clear();
+                        servicePriceTextController.clear();
+                      });
+                    }),
+              )
+            ],
           ),
-          SizedBox(width: 16.h),
-          Expanded(
-            flex: 1,
-            child: CustomElevatedButton(
-                text: 'Add',
-                onPressed: () {
-                  setModalState(() {
-                    services.add(servicesEditTextController.text);
-                    servicesEditTextController.clear();
-                  });
-                }),
-          )
         ],
       ),
     );
@@ -455,18 +522,28 @@ class _AddShopScreenState extends State<AddShopScreen>
                           ),
                           Expanded(
                             child: ListView.builder(
-                              itemCount: services.length,
+                              itemCount: servicesList.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
                                   title: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(services[index]),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(servicesList[index].name),
+                                          Text(servicesList[index]
+                                                  .price
+                                                  .toString() +
+                                              ' \$'),
+                                        ],
+                                      ),
                                       IconButton.outlined(
                                         onPressed: () {
                                           setModalState(() {
-                                            services.removeAt(index);
+                                            servicesList.removeAt(index);
                                           });
                                         },
                                         icon: Icon(Icons.delete,
@@ -491,17 +568,19 @@ class _AddShopScreenState extends State<AddShopScreen>
         },
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Add Services', style: TextStyle(color: Colors.white))),
+            child:
+                Text('Manage Services', style: TextStyle(color: Colors.white))),
       ),
     );
   }
 
   Widget _buildServicesList() {
     return ListView.builder(
-      itemCount: services.length,
+      itemCount: servicesList.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(services[index]),
+          title: Text(servicesList[index].name),
+          subtitle: Text(servicesList[index].price.toString()),
         );
       },
     );

@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mahad_s_application3/theme/theme_helper.dart';
 
 class CustomImageView extends StatelessWidget {
   ///[imagePath] is required parameter for showing image
@@ -73,6 +74,7 @@ class CustomImageView extends StatelessWidget {
   _buildImageWithBorder() {
     if (border != null) {
       return Container(
+        color: theme.colorScheme.primary,
         decoration: BoxDecoration(
           border: border,
           borderRadius: radius,

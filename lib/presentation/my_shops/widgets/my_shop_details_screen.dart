@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/controllers/services_methods.dart';
+import 'package:mahad_s_application3/controllers/shop_methods.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/models/services_model.dart';
 import 'package:mahad_s_application3/models/shops_models.dart';
 import 'package:mahad_s_application3/presentation/doctor_detail_screen/widgets/am_item_widget.dart';
+import 'package:mahad_s_application3/presentation/my_shops/widgets/service_card_widget.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_trailing_image.dart';
@@ -53,10 +55,18 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
                               physics: BouncingScrollPhysics(),
                               itemCount: service.length,
                               itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text(service[index].name),
-                                  subtitle: Text(
-                                      service[index].price.toString() + '\$'),
+                                return GestureDetector(
+                                  onTap: () => Navigator.of(context)
+                                      .pushNamed(AppRoutes.drugsDetailScreen),
+                                  child: ServiceCardWidget(
+                                      onTapTrash: () {
+                                        sl
+                                            .get<ShopMethods>()
+                                            .removeServiceToShop(
+                                                service[index].shopID,
+                                                service[index].id.toString());
+                                      },
+                                      serviceModel: service[index]),
                                 );
                               },
                             );
@@ -70,7 +80,7 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
                   // _buildDateTime(context),
                   SizedBox(height: 5.v)
                 ])),
-            bottomNavigationBar: _buildNinetyFour(context)));
+            bottomNavigationBar: _buildBookAppointmentButton(context)));
   }
 
   /// Section Widget
@@ -199,7 +209,7 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
   }
 
   /// Section Widget
-  Widget _buildNinetyFour(BuildContext context) {
+  Widget _buildBookAppointmentButton(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 24.h, right: 24.h, bottom: 28.v),
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -209,8 +219,7 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
                   text: AppLocalizations.of(context)!.lbl_book_apointment,
                   buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(AppRoutes.bookingDoctorScreen);
+                    Navigator.of(context).pushNamed(AppRoutes.myCartScreen);
                   }))
         ]));
   }

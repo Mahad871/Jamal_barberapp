@@ -56,6 +56,8 @@ class HomePage extends StatelessWidget {
         actions: [
           AppbarTrailingImage(
             onTap: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(AppRoutes.locationScreen);
               debugPrint("Home screen Logo Pressed !!");
             },
             imagePath: ImageConstant.appLogo,
@@ -76,7 +78,12 @@ class HomePage extends StatelessWidget {
             },
             itemCount: 4,
             itemBuilder: (context, index) {
-              return CategoriesItemWidget();
+              return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed(AppRoutes.findDoctorsScreen);
+                  },
+                  child: CategoriesItemWidget());
             }));
   }
 

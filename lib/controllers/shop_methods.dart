@@ -54,8 +54,9 @@ class ShopMethods extends ChangeNotifier {
   Future<ShopModel> getShopById(String shopId) async {
     try {
       // Retrieve shop by id from Firebase
-      var snapshot = await db.collection('shops').doc(shopId).get();
-      ShopModel shop = ShopModel.fromJson(snapshot.data()!);
+      DocumentSnapshot<Map<String, dynamic>> snapshot =
+          await db.collection('shops').doc(shopId).get();
+      ShopModel shop = ShopModel.fromDocumentSnapshot(snapshot);
       int index = allShops.indexWhere((element) => element.id == shop.id);
       allShops[index] = shop;
       notifyListeners();

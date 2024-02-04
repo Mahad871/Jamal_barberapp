@@ -1,5 +1,6 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="32" height="32" rx="2" fill="#227DDE"/>
-<path d="M8.88892 16H23.1111" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M16 8.88892V23.1111" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="234.942 264.936 32 32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="2" x="234.942" y="264.936" style="fill: rgb(217, 92, 241);" transform="matrix(1, 0, 0, 1, -7.105427357601002e-15, 0)"/>
+  <path d="M 243.831 280.936 L 258.053 280.936" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1, 0, 0, 1, -7.105427357601002e-15, 0)"/>
+  <path d="M 250.942 273.825 L 250.942 288.047" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1, 0, 0, 1, -7.105427357601002e-15, 0)"/>
 </svg>

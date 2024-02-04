@@ -214,70 +214,82 @@ class ProfilePage extends StatelessWidget {
 
   /// Section Widget
   Widget _buildAppointmentSection(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      SizedBox(
-          height: 48.v,
-          width: 43.h,
-          child: Stack(alignment: Alignment.center, children: [
-            Align(
-                alignment: Alignment.center,
-                child: Container(
-                    height: 48.v,
-                    width: 43.h,
-                    decoration: BoxDecoration(
-                        color: theme.colorScheme.onErrorContainer,
-                        borderRadius: BorderRadius.circular(24.h)))),
-            CustomImageView(
-                imagePath: ImageConstant.imgMenuPrimary,
-                height: 26.v,
-                width: 24.h,
-                alignment: Alignment.center)
-          ])),
-      Padding(
-          padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
-          child: Text(AppLocalizations.of(context)!.lbl_appointmnet,
-              style: CustomTextStyles.titleMedium16)),
-      Spacer(),
-      CustomImageView(
-          imagePath: ImageConstant.imgArrowRight,
-          height: 26.v,
-          width: 24.h,
-          margin: EdgeInsets.only(top: 11.v, bottom: 10.v))
-    ]);
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context, rootNavigator: true)
+            .pushNamed(AppRoutes.articlesScreen);
+      },
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        SizedBox(
+            height: 48.v,
+            width: 43.h,
+            child: Stack(alignment: Alignment.center, children: [
+              Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                      height: 48.v,
+                      width: 43.h,
+                      decoration: BoxDecoration(
+                          color: theme.colorScheme.onErrorContainer,
+                          borderRadius: BorderRadius.circular(24.h)))),
+              CustomImageView(
+                  imagePath: ImageConstant.imgMenuPrimary,
+                  height: 26.v,
+                  width: 24.h,
+                  alignment: Alignment.center)
+            ])),
+        Padding(
+            padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
+            child: Text(AppLocalizations.of(context)!.lbl_articles,
+                style: CustomTextStyles.titleMedium16)),
+        Spacer(),
+        CustomImageView(
+            imagePath: ImageConstant.imgArrowRight,
+            height: 26.v,
+            width: 24.h,
+            margin: EdgeInsets.only(top: 11.v, bottom: 10.v))
+      ]),
+    );
   }
 
   /// Section Widget
   Widget _buildPaymentSection(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      SizedBox(
-          height: 48.v,
-          width: 43.h,
-          child: Stack(alignment: Alignment.center, children: [
-            Align(
-                alignment: Alignment.center,
-                child: Container(
-                    height: 48.v,
-                    width: 43.h,
-                    decoration: BoxDecoration(
-                        color: theme.colorScheme.onErrorContainer,
-                        borderRadius: BorderRadius.circular(24.h)))),
-            CustomImageView(
-                imagePath: ImageConstant.imgFile,
-                height: 26.v,
-                width: 24.h,
-                alignment: Alignment.center)
-          ])),
-      Padding(
-          padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
-          child: Text(AppLocalizations.of(context)!.lbl_payment_method,
-              style: CustomTextStyles.titleMedium16)),
-      Spacer(),
-      CustomImageView(
-          imagePath: ImageConstant.imgArrowRight,
-          height: 26.v,
-          width: 24.h,
-          margin: EdgeInsets.only(top: 10.v, bottom: 11.v))
-    ]);
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context, rootNavigator: true)
+            .pushNamed(AppRoutes.pharmacyScreen);
+      },
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        SizedBox(
+            height: 48.v,
+            width: 43.h,
+            child: Stack(alignment: Alignment.center, children: [
+              Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                      height: 48.v,
+                      width: 43.h,
+                      decoration: BoxDecoration(
+                          color: theme.colorScheme.onErrorContainer,
+                          borderRadius: BorderRadius.circular(24.h)))),
+              CustomImageView(
+                  imagePath: ImageConstant.imgFile,
+                  height: 26.v,
+                  width: 24.h,
+                  alignment: Alignment.center)
+            ])),
+        Padding(
+            padding: EdgeInsets.only(left: 18.h, top: 17.v, bottom: 11.v),
+            child: Text(AppLocalizations.of(context)!.lbl_payment_method,
+                style: CustomTextStyles.titleMedium16)),
+        Spacer(),
+        CustomImageView(
+            imagePath: ImageConstant.imgArrowRight,
+            height: 26.v,
+            width: 24.h,
+            margin: EdgeInsets.only(top: 10.v, bottom: 11.v))
+      ]),
+    );
   }
 
   /// Section Widget

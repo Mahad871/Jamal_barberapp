@@ -48,6 +48,22 @@ class ServiceMethods with ChangeNotifier {
     return _services;
   }
 
+  Future<List<ServiceModel>> getServicesforShop(String shopId) async {
+    try {
+      final servicesSnapshot = await db
+          .collection('services')
+          .where('shopID', isEqualTo: shopId)
+          .get();
+      _services = servicesSnapshot.docs
+          .map((doc) => ServiceModel.fromJson(doc.data()))
+          .toList();
+      notifyListeners();
+    } catch (error) {
+      // Handle error
+    }
+    return _services;
+  }
+
   Future<void> addService(ServiceModel service) async {
     try {
       DocumentReference docRef =
@@ -75,10 +91,11 @@ class ServiceMethods with ChangeNotifier {
     }
   }
 
-  Future<void> deleteService(String serviceId) async {
+  Future<void> removeService(String serviceId) async {
     try {
       await db.collection('services').doc(serviceId).delete();
       _services.removeWhere((service) => service.id == serviceId);
+
       notifyListeners();
     } catch (error) {
       // Handle error

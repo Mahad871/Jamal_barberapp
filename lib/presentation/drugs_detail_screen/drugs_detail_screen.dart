@@ -25,7 +25,7 @@ class DrugsDetailScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomImageView(
-                          imagePath: ImageConstant.imgHealthvitLLys163x163,
+                          imagePath: ImageConstant.appLogo,
                           height: 163.adaptSize,
                           width: 163.adaptSize,
                           radius: BorderRadius.circular(81.h)),

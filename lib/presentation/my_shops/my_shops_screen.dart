@@ -12,9 +12,14 @@ import 'package:mahad_s_application3/widgets/app_bar/appbar_trailing_image.dart'
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
 import 'package:provider/provider.dart';
 
-class MyShopsScreen extends StatelessWidget {
+class MyShopsScreen extends StatefulWidget {
   const MyShopsScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MyShopsScreen> createState() => _MyShopsScreenState();
+}
+
+class _MyShopsScreenState extends State<MyShopsScreen> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -29,7 +34,7 @@ class MyShopsScreen extends StatelessWidget {
             future: shopMethods.getAllShops(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else if (snapshot.hasData) {

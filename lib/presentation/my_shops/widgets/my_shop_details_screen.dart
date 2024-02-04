@@ -42,15 +42,20 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
                     child: Container(
                       height: MediaQuery.of(context).size.height,
                       child: FutureBuilder<List<ServiceModel>>(
-                        future: sl.get<ServiceMethods>().getAllServices(),
+                        future: sl
+                            .get<ServiceMethods>()
+                            .getServicesforShop(widget.shop.id.toString()),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return CircularProgressIndicator();
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
                           } else if (snapshot.hasError) {
                             return Text('Error: ${snapshot.error}');
                           } else if (snapshot.hasData) {
                             List<ServiceModel> service = snapshot.data!;
+
                             return ListView.builder(
                               physics: BouncingScrollPhysics(),
                               itemCount: service.length,
@@ -60,23 +65,25 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
                                       .pushNamed(AppRoutes.drugsDetailScreen),
                                   child: ServiceCardWidget(
                                       onTapTrash: () {
-                                        sl
-                                            .get<ShopMethods>()
-                                            .removeServiceToShop(
-                                                service[index].shopID,
-                                                service[index].id.toString());
+                                        setState(() {
+                                          sl
+                                              .get<ServiceMethods>()
+                                              .removeService(
+                                                  service[index].id.toString());
+                                        });
                                       },
                                       serviceModel: service[index]),
                                 );
                               },
                             );
                           } else {
-                            return Text('No shops found');
+                            return Text('No service available');
                           }
                         },
                       ),
                     ),
                   ),
+
                   // _buildDateTime(context),
                   SizedBox(height: 5.v)
                 ])),
@@ -161,7 +168,23 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
               moreStyle:
                   CustomTextStyles.bodySmallGray600.copyWith(height: 1.50),
               lessStyle:
-                  CustomTextStyles.bodySmallGray600.copyWith(height: 1.50)))
+                  CustomTextStyles.bodySmallGray600.copyWith(height: 1.50))),
+      SizedBox(height: 17.v),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('Services', style: CustomTextStyles.titleLargeSemiBold),
+          InkWell(
+            excludeFromSemantics: true,
+            enableFeedback: true,
+            onTap: () {},
+            child: CustomImageView(
+              imagePath: ImageConstant.imgPlus,
+            ),
+          )
+        ],
+      ),
+      SizedBox(height: 8.v),
     ]);
   }
 

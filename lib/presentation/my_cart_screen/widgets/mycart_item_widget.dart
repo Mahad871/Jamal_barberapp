@@ -1,13 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
 
 // ignore: must_be_immutable
 class MycartItemWidget extends StatelessWidget {
-  const MycartItemWidget({Key? key})
+  MycartItemWidget({Key? key, required this.service})
       : super(
           key: key,
         );
-
+  ServiceModel service;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,85 +32,57 @@ class MycartItemWidget extends StatelessWidget {
                 SizedBox(
                   width: 192.h,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CustomImageView(
-                        imagePath: ImageConstant.imgHealthvitLLys50x50,
+                        imagePath: ImageConstant.imageNotFound,
                         height: 50.adaptSize,
                         width: 50.adaptSize,
                         radius: BorderRadius.circular(
                           25.h,
                         ),
-                        margin: EdgeInsets.only(top: 15.v),
+                        margin: EdgeInsets.only(right: 15.h),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 24.v),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              AppLocalizations.of(context)!.lbl_obh_combi,
-                              style: theme.textTheme.titleMedium,
-                            ),
-                            SizedBox(height: 3.v),
-                            Text(
-                              AppLocalizations.of(context)!.lbl_75ml,
-                              style: theme.textTheme.labelLarge,
-                            ),
-                          ],
-                        ),
+                      Text(
+                        service.name,
+                        style: theme.textTheme.titleMedium,
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 33.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CustomImageView(
-                        imagePath: ImageConstant.imgMenuGray500,
-                        height: 18.adaptSize,
-                        width: 18.adaptSize,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 10.h),
-                        child: Text(
-                          AppLocalizations.of(context)!.lbl_1,
-                          style: CustomTextStyles.titleMedium16,
-                        ),
-                      ),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgPlus,
-                        height: 18.adaptSize,
-                        width: 18.adaptSize,
-                        margin: EdgeInsets.only(left: 12.h),
-                      ),
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: EdgeInsets.only(right: 33.h),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       CustomImageView(
+                //         imagePath: ImageConstant.imgMenuGray500,
+                //         height: 18.adaptSize,
+                //         width: 18.adaptSize,
+                //       ),
+                //       Padding(
+                //         padding: EdgeInsets.only(left: 10.h),
+                //         child: Text(
+                //           AppLocalizations.of(context)!.lbl_1,
+                //           style: CustomTextStyles.titleMedium16,
+                //         ),
+                //       ),
+                //       CustomImageView(
+                //         imagePath: ImageConstant.imgPlus,
+                //         height: 18.adaptSize,
+                //         width: 18.adaptSize,
+                //         margin: EdgeInsets.only(left: 12.h),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 4.v),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomImageView(
-                  imagePath: ImageConstant.imgTrashGray500,
-                  height: 18.adaptSize,
-                  width: 18.adaptSize,
-                  alignment: Alignment.centerRight,
-                ),
-                SizedBox(height: 47.v),
-                Text(
-                  AppLocalizations.of(context)!.lbl_9_99,
-                  style: theme.textTheme.titleMedium,
-                ),
-              ],
-            ),
+          Text(
+            "\$" + service.price.toString(),
+            style: theme.textTheme.titleMedium,
           ),
         ],
       ),

@@ -1,3 +1,11 @@
+import 'dart:developer';
+
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:mahad_s_application3/controllers/appointment_methods.dart';
+import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
+import 'package:mahad_s_application3/models/appointment_model.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
+
 import '../my_cart_screen/widgets/mycart_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
@@ -6,9 +14,17 @@ import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
 import 'package:mahad_s_application3/widgets/custom_elevated_button.dart';
 
-class MyCartScreen extends StatelessWidget {
-  const MyCartScreen({Key? key}) : super(key: key);
+class MyCartScreen extends StatefulWidget {
+  MyCartScreen({Key? key, required this.service}) : super(key: key);
 
+  ServiceModel service;
+
+  @override
+  State<MyCartScreen> createState() => _MyCartScreenState();
+}
+
+class _MyCartScreenState extends State<MyCartScreen> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -52,9 +68,11 @@ class MyCartScreen extends StatelessWidget {
         separatorBuilder: (context, index) {
           return SizedBox(height: 20.v);
         },
-        itemCount: 2,
+        itemCount: 1,
         itemBuilder: (context, index) {
-          return MycartItemWidget();
+          return MycartItemWidget(
+            service: widget.service,
+          );
         });
   }
 
@@ -68,7 +86,7 @@ class MyCartScreen extends StatelessWidget {
           padding: EdgeInsets.only(right: 4.h),
           child: _buildTotal(context,
               totalLabel: AppLocalizations.of(context)!.lbl_subtotal,
-              priceLabel: AppLocalizations.of(context)!.lbl_25_98)),
+              priceLabel: '\$' + widget.service.price.toString())),
       SizedBox(height: 11.v),
       Padding(
           padding: EdgeInsets.only(right: 1.h),
@@ -80,7 +98,7 @@ class MyCartScreen extends StatelessWidget {
           padding: EdgeInsets.only(right: 4.h),
           child: _buildTotal(context,
               totalLabel: AppLocalizations.of(context)!.lbl_total,
-              priceLabel: AppLocalizations.of(context)!.lbl_26_98)),
+              priceLabel: '\$' + (widget.service.price + 1).toString())),
       SizedBox(height: 13.v),
       Divider()
     ]);
@@ -97,7 +115,8 @@ class MyCartScreen extends StatelessWidget {
       Padding(
           padding: EdgeInsets.only(left: 1.h),
           child: _buildCard(context,
-              visaLabel: AppLocalizations.of(context)!.lbl_visa, changeLabel: AppLocalizations.of(context)!.lbl_change))
+              visaLabel: AppLocalizations.of(context)!.lbl_visa,
+              changeLabel: AppLocalizations.of(context)!.lbl_change))
     ]);
   }
 
@@ -121,12 +140,51 @@ class MyCartScreen extends StatelessWidget {
                             style: theme.textTheme.titleMedium))
                   ])),
           CustomElevatedButton(
+              isLoading: isLoading,
               height: 50.v,
               width: 192.h,
               text: AppLocalizations.of(context)!.lbl_checkout,
               buttonTextStyle: CustomTextStyles.titleSmallWhiteA700_1,
               onPressed: () {
-                // onTapCheckout(context);
+                setState(() {
+                  isLoading = true;
+                });
+                AppointmentModel appointment = AppointmentModel(
+                  dateTime: DateTime.now().toString(),
+                  serviceId: widget.service.id,
+                  price: widget.service.price,
+                  shopId: widget.service.shopID,
+                  userId: sl.get<AuthMethods>().currentUser!.user!.uid,
+                  status: AppointmentStatus.upcoming.status,
+                );
+                try {
+                  sl.get<AppointmentMethods>().createAppointment(appointment);
+                  Fluttertoast.showToast(
+                      msg: "Appointment added successfully",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.SNACKBAR,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                      fontSize: 16.0);
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.homeContainerScreen,
+                  );
+                } catch (e) {
+                  Fluttertoast.showToast(
+                      msg: e.toString(),
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.SNACKBAR,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.black,
+                      fontSize: 16.0);
+                }
+
+                setState(() {
+                  isLoading = false;
+                });
               })
         ]));
   }

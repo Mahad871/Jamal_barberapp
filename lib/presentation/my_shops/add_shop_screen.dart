@@ -5,11 +5,12 @@ import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
 import 'package:mahad_s_application3/controllers/services_methods.dart';
 import 'package:mahad_s_application3/controllers/shop_methods.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
-import 'package:mahad_s_application3/models/appointments_model.dart';
-import 'package:mahad_s_application3/models/services_model.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
+import 'package:mahad_s_application3/models/appointment_model.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
 import 'package:mahad_s_application3/models/user_model.dart';
 import 'package:mahad_s_application3/presentation/my_shops/add_services.dart';
+import 'package:mahad_s_application3/widgets/Time_pill_container.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_two.dart';
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
@@ -220,24 +221,13 @@ class _AddShopScreenState extends State<AddShopScreen>
 
   Widget _buildOpenTimePickerSection(BuildContext context) {
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('Open Time: ${selectedOpenTime?.format(context)}',
-              style: TextStyle(fontSize: 16.v, color: Colors.black)),
-          SizedBox(width: 16.h),
-          Container(
-            width: 50.h,
-            height: 50.v,
-            child: ElevatedButton(
-              onPressed: () => _selectOpenTime(context),
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-            ),
-          )
-        ],
+      child: InkWell(
+        onTap: () {
+          print('object');
+          _selectOpenTime(context);
+        },
+        child: TimePillContainer(
+            time: 'Open Time: ${selectedOpenTime.format(context)}'),
       ),
     );
   }
@@ -249,7 +239,7 @@ class _AddShopScreenState extends State<AddShopScreen>
           width: 121.h,
           child: Stack(alignment: Alignment.bottomRight, children: [
             CustomImageView(
-                imagePath: ImageConstant.appLogo,
+                imagePath: ImageConstant.imageNotFound,
                 height: 200.adaptSize,
                 width: 200.adaptSize,
                 radius: BorderRadius.circular(40.h),
@@ -267,24 +257,15 @@ class _AddShopScreenState extends State<AddShopScreen>
   }
 
   Widget _buildCloseTimePickerSection(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text('Close Time: ${selectedCloseTime?.format(context)}',
-            style: TextStyle(fontSize: 16.v, color: Colors.black)),
-        SizedBox(width: 16.h),
-        Container(
-          width: 50.h,
-          height: 50.v,
-          child: ElevatedButton(
-            onPressed: () => _selectCloseTime(context),
-            child: Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
-          ),
-        )
-      ],
+    return Container(
+      child: InkWell(
+        onTap: () {
+          print('object');
+          _selectCloseTime(context);
+        },
+        child: TimePillContainer(
+            time: 'Close Time: ${selectedCloseTime.format(context)}'),
+      ),
     );
   }
 
@@ -369,9 +350,9 @@ class _AddShopScreenState extends State<AddShopScreen>
         setState(() {
           this.isloading = true;
         });
-        List<Appointment> appointmentss = sl
+        List<AppointmentModel> appointmentss = sl
             .get<ShopMethods>()
-            .createAppointments(
+            .createAppointmentsforShop(
                 DateTime(
                   DateTime.now().year,
                   DateTime.now().month,
@@ -386,7 +367,7 @@ class _AddShopScreenState extends State<AddShopScreen>
                     selectedCloseTime.hour,
                     selectedCloseTime.minute));
 
-        for (Appointment a in appointmentss) {
+        for (AppointmentModel a in appointmentss) {
           print(a.toJson());
         }
 
@@ -398,7 +379,7 @@ class _AddShopScreenState extends State<AddShopScreen>
           shopMobileNumber: shopMobileNumberController.text,
           openTime: selectedOpenTime.toString(),
           closeTime: selectedCloseTime.toString(),
-          appointments: appointmentss,
+          appointments: [],
           daysOpen: daysOpen,
         );
         String shopID = await sl.get<ShopMethods>().addShop(shop);

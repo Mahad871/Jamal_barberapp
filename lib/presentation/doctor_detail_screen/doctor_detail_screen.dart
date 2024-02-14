@@ -1,4 +1,11 @@
-import '../doctor_detail_screen/widgets/am_item_widget.dart';
+import 'package:mahad_s_application3/controllers/services_methods.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
+import 'package:mahad_s_application3/presentation/doctor_detail_screen/widgets/service_card_widget.dart';
+import 'package:mahad_s_application3/presentation/service_detail_screen/service_detail_screen.dart';
+import 'package:mahad_s_application3/widgets/date_day_container.dart';
+
+import '../../widgets/Time_pill_container.dart';
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
@@ -9,25 +16,81 @@ import 'package:mahad_s_application3/widgets/custom_elevated_button.dart';
 import 'package:mahad_s_application3/widgets/custom_icon_button.dart';
 import 'package:readmore/readmore.dart';
 
-class DoctorDetailScreen extends StatelessWidget {
-  const DoctorDetailScreen({Key? key}) : super(key: key);
+class DoctorDetailScreen extends StatefulWidget {
+  DoctorDetailScreen({Key? key, required this.shop}) : super(key: key);
+  ShopModel shop;
 
+  @override
+  State<DoctorDetailScreen> createState() => _DoctorDetailScreenState();
+}
+
+class _DoctorDetailScreenState extends State<DoctorDetailScreen> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
-            body: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.v),
-                child: Column(children: [
-                  _buildDoctorInformation(context),
-                  SizedBox(height: 31.v),
-                  _buildDateTime(context),
-                  SizedBox(height: 5.v)
-                ])),
-            bottomNavigationBar: _buildNinetyFour(context)));
+      appBar: _buildAppBar(context),
+      body: Container(
+          width: double.maxFinite,
+          padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.v),
+          child: Column(children: [
+            _buildDoctorInformation(context),
+            SizedBox(height: 31.v),
+            Expanded(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder<List<ServiceModel>>(
+                  future: sl
+                      .get<ServiceMethods>()
+                      .getServicesforShop(widget.shop.id.toString()),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else if (snapshot.hasData) {
+                      List<ServiceModel> service = snapshot.data!;
+
+                      return ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: service.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ServiceDetailScreen(
+                                    service: service[index]),
+                              )),
+                              child: ServiceCardWidget(
+                                  onTapTrash: () {
+                                    setState(() {
+                                      sl.get<ServiceMethods>().removeService(
+                                          service[index].id.toString());
+                                    });
+                                  },
+                                  serviceModel: service[index]),
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      return Text('No service available');
+                    }
+                  },
+                ),
+              ),
+            ),
+            SizedBox(height: 5.v),
+            // _buildDateTime(context),
+            SizedBox(height: 5.v)
+          ])),
+      // bottomNavigationBar: _buildBookAppointmentButton(context),
+    ));
   }
 
   /// Section Widget
@@ -38,7 +101,7 @@ class DoctorDetailScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeft,
             margin: EdgeInsets.only(left: 24.h),
             onTap: () {
-              // onTapArrowLeft(context);
+              Navigator.pop(context);
             }),
         centerTitle: true,
         title:
@@ -60,7 +123,9 @@ class DoctorDetailScreen extends StatelessWidget {
           padding: EdgeInsets.only(right: 41.h),
           child: Row(children: [
             CustomImageView(
-                imagePath: ImageConstant.imgRectangle959,
+                imagePath: widget.shop.shopImage.toString() == ''
+                    ? ImageConstant.imageNotFound
+                    : widget.shop.shopImage.toString(),
                 height: 111.adaptSize,
                 width: 111.adaptSize,
                 radius: BorderRadius.circular(8.h)),
@@ -69,10 +134,10 @@ class DoctorDetailScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(AppLocalizations.of(context)!.dr_marcus_horizon,
+                      Text(widget.shop.shopName.toString(),
                           style: theme.textTheme.titleMedium),
                       SizedBox(height: 8.v),
-                      Text(AppLocalizations.of(context)!.lbl_chardiologist,
+                      Text(widget.shop.id.toString(),
                           style: theme.textTheme.labelLarge),
                       SizedBox(height: 8.v),
                       Row(children: [
@@ -93,10 +158,11 @@ class DoctorDetailScreen extends StatelessWidget {
                             width: 13.adaptSize,
                             margin: EdgeInsets.only(bottom: 2.v)),
                         Padding(
-                            padding: EdgeInsets.only(left: 3.h),
-                            child: Text(
-                                AppLocalizations.of(context)!.lbl_800m_away,
-                                style: theme.textTheme.labelLarge))
+                          padding: EdgeInsets.only(left: 3.h),
+                          child: Text(
+                            widget.shop.shopAddress.toString(),
+                          ),
+                        )
                       ])
                     ]))
           ])),
@@ -106,7 +172,10 @@ class DoctorDetailScreen extends StatelessWidget {
       SizedBox(height: 8.v),
       SizedBox(
           width: 305.h,
-          child: ReadMoreText(AppLocalizations.of(context)!.lorem_ipsum_dolor,
+          child: ReadMoreText(
+              widget.shop.description == ''
+                  ? 'No Details'
+                  : widget.shop.description.toString(),
               trimLines: 3,
               colorClickableText: theme.colorScheme.primary,
               trimMode: TrimMode.Line,
@@ -122,34 +191,34 @@ class DoctorDetailScreen extends StatelessWidget {
   Widget _buildDateTime(BuildContext context) {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        _buildThirtyOne(context,
-            dynamicText1: AppLocalizations.of(context)!.lbl_mon,
-            dynamicText2: AppLocalizations.of(context)!.lbl_21),
+        DateDayContainer(
+            day: AppLocalizations.of(context)!.lbl_mon,
+            date: AppLocalizations.of(context)!.lbl_21),
         Padding(
             padding: EdgeInsets.only(left: 12.h),
-            child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_tue,
-                dynamicText2: AppLocalizations.of(context)!.lbl_22)),
+            child: DateDayContainer(
+                day: AppLocalizations.of(context)!.lbl_tue,
+                date: AppLocalizations.of(context)!.lbl_22)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
-            child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_wed,
-                dynamicText2: AppLocalizations.of(context)!.lbl_23)),
+            child: DateDayContainer(
+                day: AppLocalizations.of(context)!.lbl_wed,
+                date: AppLocalizations.of(context)!.lbl_23)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
-            child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_thu,
-                dynamicText2: AppLocalizations.of(context)!.lbl_24)),
+            child: DateDayContainer(
+                day: AppLocalizations.of(context)!.lbl_thu,
+                date: AppLocalizations.of(context)!.lbl_24)),
         Padding(
             padding: EdgeInsets.only(left: 11.h),
-            child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_fri,
-                dynamicText2: AppLocalizations.of(context)!.lbl_25)),
+            child: DateDayContainer(
+                day: AppLocalizations.of(context)!.lbl_fri,
+                date: AppLocalizations.of(context)!.lbl_25)),
         Padding(
             padding: EdgeInsets.only(left: 6.h),
-            child: _buildThirtyOne(context,
-                dynamicText1: AppLocalizations.of(context)!.lbl_sat,
-                dynamicText2: AppLocalizations.of(context)!.lbl_26))
+            child: DateDayContainer(
+                day: AppLocalizations.of(context)!.lbl_sat,
+                date: AppLocalizations.of(context)!.lbl_26))
       ]),
       SizedBox(height: 32.v),
       Divider(),
@@ -157,21 +226,19 @@ class DoctorDetailScreen extends StatelessWidget {
       Wrap(
           runSpacing: 9.v,
           spacing: 9.h,
-          children: List<Widget>.generate(9, (index) => AmItemWidget()))
+          children: List<Widget>.generate(
+              9,
+              (index) => TimePillContainer(
+                    time: '9;00 AM',
+                  )))
     ]);
   }
 
   /// Section Widget
-  Widget _buildNinetyFour(BuildContext context) {
+  Widget _buildBookAppointmentButton(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 24.h, right: 24.h, bottom: 28.v),
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          CustomIconButton(
-              height: 50.adaptSize,
-              width: 50.adaptSize,
-              padding: EdgeInsets.all(13.h),
-              decoration: IconButtonStyleHelper.fillOnErrorContainer,
-              child: CustomImageView(imagePath: ImageConstant.imgMusicPrimary)),
           Expanded(
               child: CustomElevatedButton(
                   height: 50.v,
@@ -186,30 +253,4 @@ class DoctorDetailScreen extends StatelessWidget {
   }
 
   /// Common widget
-  Widget _buildThirtyOne(
-    BuildContext context, {
-    required String dynamicText1,
-    required String dynamicText2,
-  }) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 9.v),
-        decoration: AppDecoration.outlineGray300
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder16),
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(height: 5.v),
-              Padding(
-                  padding: EdgeInsets.only(left: 2.h),
-                  child: Text(dynamicText1,
-                      style: theme.textTheme.labelMedium!
-                          .copyWith(color: appTheme.gray500))),
-              SizedBox(height: 4.v),
-              Text(dynamicText2,
-                  style: theme.textTheme.titleMedium!
-                      .copyWith(color: theme.colorScheme.onPrimary))
-            ]));
-  }
 }

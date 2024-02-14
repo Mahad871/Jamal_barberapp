@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
 
 // ignore: must_be_immutable
 class MyShopDetailsItem extends StatefulWidget {
@@ -29,7 +29,9 @@ class _MyShopDetailsItemState extends State<MyShopDetailsItem> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           CustomImageView(
-            imagePath: ImageConstant.appLogo,
+            imagePath: widget.shopModel.shopImage == ''
+                ? ImageConstant.imageNotFound
+                : ImageConstant.appLogo,
             height: 111.adaptSize,
             width: 111.adaptSize,
             radius: BorderRadius.circular(

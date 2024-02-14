@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mahad_s_application3/models/services_model.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
 
 class ServiceMethods with ChangeNotifier {
   List<ServiceModel> _services = [];

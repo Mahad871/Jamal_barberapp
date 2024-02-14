@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mahad_s_application3/models/appointments_model.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
+import 'package:mahad_s_application3/models/appointment_model.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
 
 class ShopMethods extends ChangeNotifier {
   List<ShopModel> allShops = [];
@@ -141,8 +141,9 @@ class ShopMethods extends ChangeNotifier {
     }
   }
 
-  List<Appointment> createAppointments(DateTime startTime, DateTime endTime) {
-    List<Appointment> appointments = [];
+  List<AppointmentModel> createAppointmentsforShop(
+      DateTime startTime, DateTime endTime) {
+    List<AppointmentModel> appointments = [];
 
     try {
       DateTime start = DateTime(startTime.year, startTime.month, startTime.day,
@@ -151,7 +152,7 @@ class ShopMethods extends ChangeNotifier {
           endTime.hour, endTime.minute);
 
       while (start.isBefore(end)) {
-        appointments.add(Appointment(dateTime: start));
+        appointments.add(AppointmentModel(dateTime: start.toString()));
         start = start.add(Duration(hours: 1));
       }
     } catch (e) {

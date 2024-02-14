@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mahad_s_application3/controllers/shop_methods.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
 import 'package:mahad_s_application3/presentation/my_shops/widgets/my_shop_details_item.dart';
 
 import 'package:flutter/material.dart';

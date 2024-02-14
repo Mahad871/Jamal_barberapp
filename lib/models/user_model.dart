@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
 
 class UserModel {
   late String? uid;

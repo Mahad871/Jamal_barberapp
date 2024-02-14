@@ -1,7 +1,10 @@
 import 'package:mahad_s_application3/controllers/firebase/auth_methods.dart';
+import 'package:mahad_s_application3/controllers/shop_methods.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
+import 'package:mahad_s_application3/presentation/doctor_detail_screen/doctor_detail_screen.dart';
 
 import '../home_page/widgets/categories_item_widget.dart';
-import '../home_page/widgets/doctor_item_widget.dart';
+import 'widgets/shop_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle.dart';
@@ -42,7 +45,7 @@ class HomePage extends StatelessWidget {
                           SizedBox(height: 15.v),
                           _buildOfferBanner(context),
                           SizedBox(height: 27.v),
-                          _buildTopDoctors(context)
+                          _buildBestBarbers(context)
                         ]))))));
   }
 
@@ -150,7 +153,7 @@ class HomePage extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildTopDoctors(BuildContext context) {
+  Widget _buildBestBarbers(BuildContext context) {
     return Column(children: [
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Padding(
@@ -168,28 +171,45 @@ class HomePage extends StatelessWidget {
                     style: CustomTextStyles.titleSmallPrimary)))
       ]),
       SizedBox(height: 16.v),
-      GridView.builder(
-          shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 191.v,
-              crossAxisCount: 2,
-              mainAxisSpacing: 17.h,
-              crossAxisSpacing: 17.h),
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: 4,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamed(AppRoutes.doctorDetailScreen);
-              },
-              child: DoctorItemWidget(
-                  // onTap: () {
-                  //   Navigator.pushNamed(context, AppRoutes.bookingDoctorScreen);
-                  // },
+      FutureBuilder<List<ShopModel>>(
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+          List<ShopModel> shops = [];
+          shops = snapshot.data!;
+          return GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisExtent: 191.v,
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 17.h,
+                  crossAxisSpacing: 17.h),
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: shops.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .push(MaterialPageRoute(
+                      builder: (context) =>
+                          DoctorDetailScreen(shop: shops[index]),
+                    ));
+                  },
+                  child: ShopItemWidget(
+                    shop: shops[index],
+                    // onTap: () {
+                    //   Navigator.pushNamed(context, AppRoutes.bookingDoctorScreen);
+                    // },
                   ),
-            );
-          })
+                );
+              });
+        },
+        future: sl.get<ShopMethods>().getAllShops(),
+      )
     ]);
   }
 }

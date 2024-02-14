@@ -24,7 +24,7 @@ import 'package:mahad_s_application3/presentation/audio_call_screen/audio_call_s
 import 'package:mahad_s_application3/presentation/video_call_screen/video_call_screen.dart';
 import 'package:mahad_s_application3/presentation/articles_screen/articles_screen.dart';
 import 'package:mahad_s_application3/presentation/pharmacy_screen/pharmacy_screen.dart';
-import 'package:mahad_s_application3/presentation/drugs_detail_screen/drugs_detail_screen.dart';
+import 'package:mahad_s_application3/presentation/service_detail_screen/service_detail_screen.dart';
 import 'package:mahad_s_application3/presentation/my_cart_screen/my_cart_screen.dart';
 import 'package:mahad_s_application3/presentation/location_screen/location_screen.dart';
 import 'package:mahad_s_application3/presentation/app_navigation_screen/app_navigation_screen.dart';
@@ -87,15 +87,15 @@ class AppRoutes {
     homeContainerScreen: (context) => HomeContainerScreen(),
     topDoctorScreen: (context) => TopBarbers(),
     findDoctorsScreen: (context) => FindDoctorsScreen(),
-    doctorDetailScreen: (context) => DoctorDetailScreen(),
+    // doctorDetailScreen: (context) => DoctorDetailScreen(),
     bookingDoctorScreen: (context) => BookingDoctorScreen(),
     chatWithDoctorScreen: (context) => ChatWithDoctorScreen(),
     // audioCallScreen: (context) => AudioCallScreen(),
     // videoCallScreen: (context) => VideoCallScreen(),
     articlesScreen: (context) => ArticlesScreen(),
     pharmacyScreen: (context) => PharmacyScreen(),
-    drugsDetailScreen: (context) => DrugsDetailScreen(),
-    myCartScreen: (context) => MyCartScreen(),
+    // drugsDetailScreen: (context) => ServiceDetailScreen(),
+    // myCartScreen: (context) => MyCartScreen(),
     locationScreen: (context) => LocationScreen(),
     appNavigationScreen: (context) => AppNavigationScreen(),
     profilePage: (context) => ProfilePage(),

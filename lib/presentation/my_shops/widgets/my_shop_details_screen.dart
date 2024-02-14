@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mahad_s_application3/controllers/services_methods.dart';
 import 'package:mahad_s_application3/controllers/shop_methods.dart';
 import 'package:mahad_s_application3/core/app_export.dart';
-import 'package:mahad_s_application3/models/services_model.dart';
-import 'package:mahad_s_application3/models/shops_models.dart';
-import 'package:mahad_s_application3/presentation/doctor_detail_screen/widgets/am_item_widget.dart';
-import 'package:mahad_s_application3/presentation/my_shops/widgets/service_card_widget.dart';
+import 'package:mahad_s_application3/models/service_model.dart';
+import 'package:mahad_s_application3/models/shops_model.dart';
+import 'package:mahad_s_application3/widgets/Time_pill_container.dart';
+import 'package:mahad_s_application3/presentation/my_shops/widgets/my_shop_service_card_widget.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_leading_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:mahad_s_application3/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:mahad_s_application3/widgets/app_bar/custom_app_bar.dart';
 import 'package:mahad_s_application3/widgets/custom_elevated_button.dart';
 import 'package:mahad_s_application3/widgets/custom_icon_button.dart';
+import 'package:mahad_s_application3/widgets/custom_text_form_field.dart';
 import 'package:readmore/readmore.dart';
 
 class MyShopDetailsScreen extends StatefulWidget {
@@ -24,70 +25,220 @@ class MyShopDetailsScreen extends StatefulWidget {
 }
 
 class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
-  // Rest of the code...
+  TextEditingController serviceNameTextController = TextEditingController();
+  TextEditingController servicePriceTextController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
-            body: Container(
+      appBar: _buildAppBar(context),
+      body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: double.maxFinite,
+          padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.v),
+          child: Column(children: [
+            _buildShopInformation(context),
+            SizedBox(height: 31.v),
+            Expanded(
+              child: Container(
                 height: MediaQuery.of(context).size.height,
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 32.v),
-                child: Column(children: [
-                  _buildShopInformation(context),
-                  SizedBox(height: 31.v),
-                  Expanded(
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: FutureBuilder<List<ServiceModel>>(
-                        future: sl
-                            .get<ServiceMethods>()
-                            .getServicesforShop(widget.shop.id.toString()),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else if (snapshot.hasError) {
-                            return Text('Error: ${snapshot.error}');
-                          } else if (snapshot.hasData) {
-                            List<ServiceModel> service = snapshot.data!;
+                child: FutureBuilder<List<ServiceModel>>(
+                  future: sl
+                      .get<ServiceMethods>()
+                      .getServicesforShop(widget.shop.id.toString()),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else if (snapshot.hasData) {
+                      List<ServiceModel> service = snapshot.data!;
 
-                            return ListView.builder(
-                              physics: BouncingScrollPhysics(),
-                              itemCount: service.length,
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () => Navigator.of(context)
-                                      .pushNamed(AppRoutes.drugsDetailScreen),
-                                  child: ServiceCardWidget(
-                                      onTapTrash: () {
-                                        setState(() {
-                                          sl
-                                              .get<ServiceMethods>()
-                                              .removeService(
-                                                  service[index].id.toString());
-                                        });
-                                      },
-                                      serviceModel: service[index]),
-                                );
-                              },
-                            );
-                          } else {
-                            return Text('No service available');
-                          }
+                      return ListView.builder(
+                        physics: BouncingScrollPhysics(),
+                        itemCount: service.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context)
+                                  .pushNamed(AppRoutes.drugsDetailScreen),
+                              child: MyShopServiceCardWidget(
+                                  onTapTrash: () {
+                                    setState(() {
+                                      sl.get<ServiceMethods>().removeService(
+                                          service[index].id.toString());
+                                    });
+                                  },
+                                  serviceModel: service[index]),
+                            ),
+                          );
                         },
-                      ),
+                      );
+                    } else {
+                      return Text('No service available');
+                    }
+                  },
+                ),
+              ),
+            ),
+
+            // _buildDateTime(context),
+            SizedBox(height: 5.v)
+          ])),
+      // bottomNavigationBar: _buildBookAppointmentButton(context),
+    ));
+  }
+
+  _buildServicesField(BuildContext context, StateSetter setModalState) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          CustomTextFormField(
+              controller: serviceNameTextController,
+              textInputAction: TextInputAction.done,
+              hintText: "  Name",
+              prefixConstraints: BoxConstraints(maxHeight: 56.v),
+              contentPadding:
+                  EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
+          Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: CustomTextFormField(
+                    controller: servicePriceTextController,
+                    textInputType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    hintText: "  price",
+                    prefixConstraints: BoxConstraints(maxHeight: 56.v),
+                    contentPadding:
+                        EdgeInsets.only(top: 18.v, right: 30.h, bottom: 18.v)),
+              ),
+              SizedBox(width: 16.h),
+              Expanded(
+                flex: 1,
+                child: CustomElevatedButton(
+                    text: 'Add',
+                    onPressed: () {
+                      setModalState(() {
+                        ServiceModel serviceModel = ServiceModel(
+                            shopID: widget.shop.id.toString(),
+                            name: serviceNameTextController.text,
+                            price:
+                                double.parse(servicePriceTextController.text));
+                        sl.get<ServiceMethods>().addService(serviceModel);
+                        serviceNameTextController.clear();
+                        servicePriceTextController.clear();
+                      });
+                    }),
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  _buildServicesSheet(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        showModalBottomSheet(
+          showDragHandle: true,
+          isScrollControlled: true,
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+          ),
+          builder: (BuildContext context) {
+            return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setModalState) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.50,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Services',
+                            style: TextStyle(
+                              fontFamily: 'Raleway',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24.0,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: FutureBuilder<List<ServiceModel>>(
+                            future: sl
+                                .get<ServiceMethods>()
+                                .getServicesforShop(widget.shop.id.toString()),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              } else if (snapshot.hasData) {
+                                List<ServiceModel> service = snapshot.data!;
+
+                                return ListView.builder(
+                                  physics: BouncingScrollPhysics(),
+                                  itemCount: service.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0),
+                                      child: GestureDetector(
+                                        onTap: () => Navigator.of(context)
+                                            .pushNamed(
+                                                AppRoutes.drugsDetailScreen),
+                                        child: MyShopServiceCardWidget(
+                                            onTapTrash: () {
+                                              setState(() {
+                                                sl
+                                                    .get<ServiceMethods>()
+                                                    .removeService(
+                                                        service[index]
+                                                            .id
+                                                            .toString());
+                                              });
+                                            },
+                                            serviceModel: service[index]),
+                                      ),
+                                    );
+                                  },
+                                );
+                              } else {
+                                return Text('No service available');
+                              }
+                            },
+                          ),
+                        ),
+                        SizedBox(height: 16.v),
+                        _buildServicesField(context, setModalState),
+                      ],
                     ),
                   ),
-
-                  // _buildDateTime(context),
-                  SizedBox(height: 5.v)
-                ])),
-            bottomNavigationBar: _buildBookAppointmentButton(context)));
+                );
+              },
+            );
+          },
+        );
+      },
+      child: CustomImageView(
+        imagePath: ImageConstant.imgPlus,
+      ),
+    );
   }
 
   /// Section Widget
@@ -112,7 +263,7 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
           padding: EdgeInsets.only(right: 41.h),
           child: Row(children: [
             CustomImageView(
-                imagePath: ImageConstant.appLogo,
+                imagePath: ImageConstant.imageNotFound,
                 height: 111.adaptSize,
                 width: 111.adaptSize,
                 radius: BorderRadius.circular(8.h)),
@@ -174,14 +325,7 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('Services', style: CustomTextStyles.titleLargeSemiBold),
-          InkWell(
-            excludeFromSemantics: true,
-            enableFeedback: true,
-            onTap: () {},
-            child: CustomImageView(
-              imagePath: ImageConstant.imgPlus,
-            ),
-          )
+          _buildServicesSheet(context)
         ],
       ),
       SizedBox(height: 8.v),
@@ -227,7 +371,11 @@ class _MyShopDetailsScreenState extends State<MyShopDetailsScreen> {
       Wrap(
           runSpacing: 9.v,
           spacing: 9.h,
-          children: List<Widget>.generate(9, (index) => AmItemWidget()))
+          children: List<Widget>.generate(
+              9,
+              (index) => TimePillContainer(
+                    time: TimeOfDay.now().toString(),
+                  )))
     ]);
   }
 

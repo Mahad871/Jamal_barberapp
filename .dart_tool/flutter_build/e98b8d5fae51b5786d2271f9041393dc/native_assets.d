@@ -1,0 +1,1 @@
+ D:\\Code\\VS_Code_Flutter\\Jamal\\Jamal_barberapp\\.dart_tool\\flutter_build\\e98b8d5fae51b5786d2271f9041393dc\\native_assets.yaml: 

@@ -53,6 +53,7 @@ class AuthMethods extends ChangeNotifier {
 
       if (userModel == null) {
         UserModel user = UserModel(
+          
           uid: authResult.user!.uid,
           username: authResult.user!.displayName!,
           email: authResult.user!.email!,

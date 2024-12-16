@@ -40,7 +40,7 @@ A Flutter-based mobile application that connects users with barbers, allowing th
     ├── routes/          # Navigation routes
     ├── theme/           # App theming
     └── widgets/         # Reusable widgets
-
+```
 
 ## Key Libraries
 

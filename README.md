@@ -1,68 +1,78 @@
+# Jamal Barber App
 
-# mahad_s_application3
-### Table of contents
-- [System requirements](#system-requirements)
-- [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
-- [Check the UI of the entire app](#app-navigations)
-- [Application structure](#project-structure)
-- [How to format your code?](#how-you-can-do-code-formatting)
-- [How you can improve code readability?](#how-you-can-improve-the-readability-of-code)
-- [Libraries and tools used](#libraries-and-tools-used)
-- [Support](#support)
+A Flutter-based mobile application that connects users with barbers, allowing them to find and book appointments with nearby barbers.
 
-### System requirements
+## Features
 
-Dart SDK Version 2.18.0 or greater.
-Flutter SDK Version 3.3.0 or greater.
+- User authentication (Sign up/Login) for both customers and barbers
+- Barber profile listings with ratings and reviews
+- Location-based barber search (find barbers within 800m)
+- Appointment booking system
+- Real-time barber availability status
+- Multilingual support (English and Arabic)
+- Rating system for barber services
 
-### Figma design guidelines for better UI accuracy
+## System Requirements
 
-Read our guidelines to increase the accuracy of design-to-code conversion by optimizing Figma designs.
-https://docs.dhiwise.com/docs/Designguidelines/intro
+- Dart SDK Version 2.18.0 or greater
+- Flutter SDK Version 3.3.0 or greater
 
-### Check the UI of the entire app
+## Tech Stack
 
-Check the UI of all the app screens from a single place by setting up the 'initialRoute'  to AppNavigation in the AppRoutes.dart file.
+- Frontend: Flutter/Dart
+- Backend: Firebase
+- Authentication: Firebase Auth
+- Database: Cloud Firestore
+- State Management: Provider
 
-### Application structure
+## Project Structure
 
-After successful build, your application structure should look like this:
-
-```
 .
-├── android                         - It contains files required to run the application on an Android platform.
-├── assets                          - It contains all images and fonts of your application.
-├── ios                             - It contains files required to run the application on an iOS platform.
-├── lib                             - Most important folder in the application, used to write most of the Dart code..
-    ├── main.dart                   - Starting point of the application
-    ├── core
-    │   ├── app_export.dart         - It contains commonly used file imports
-    │   ├── constants               - It contains static constant class file
-    │   └── utils                   - It contains common files and utilities of the application
-    ├── presentation                - It contains widgets of the screens 
-    ├── routes                      - It contains all the routes of the application
-    └── theme                       - It contains app theme and decoration classes
-    └── widgets                     - It contains all custom widget classes
-```
+├── android                - Android platform specific files
+├── assets                 - Images and fonts
+├── ios                    - iOS platform specific files
+├── lib                    - Core application code
+    ├── controllers       - Business logic
+    ├── core             - Constants and utilities
+    ├── models           - Data models
+    ├── presentation     - UI screens and widgets
+    ├── routes          - Navigation routes
+    ├── theme           - App theming
+    └── widgets         - Reusable widgets
 
-### How to format your code?
 
-- if your code is not formatted then run following command in your terminal to format code
-  ```
-  dart format .
-  ```
-
-### How you can improve code readability?
-
-Resolve the errors and warnings that are shown in the application.
-
-### Libraries and tools used
+## Key Libraries
 
 - Provider - State management
-  https://pub.dev/packages/provider
-- cached_network_image - For storing internet image into cache
-  https://pub.dev/packages/cached_network_image
+- cached_network_image - Image caching
+- cloud_firestore - Firebase database integration
+- fluttertoast - Toast notifications
+- intl - Internationalization
 
-### Support
+## Setup and Installation
 
-If you have any problems or questions, go to our Discord channel, where we will help you as quickly as possible: https://discord.com/invite/rFMnCG5MZ7
+1. Clone the repository
+2. Ensure Flutter and Dart are installed on your system
+3. Run `flutter pub get` to install dependencies
+4. Configure Firebase project and add configuration files
+5. Run `flutter run` to start the application
+
+## Language Support
+
+- English
+- Arabic
+
+## Contributing
+
+Feel free to open issues and pull requests for any improvements.
+
+## License
+
+MIT
+
+## Author
+
+[@Mahad871](https://github.com/Mahad871)
+
+---
+Last Updated: 2024-12-16

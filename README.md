@@ -27,18 +27,19 @@ A Flutter-based mobile application that connects users with barbers, allowing th
 
 ## Project Structure
 
+```plaintext
 .
-├── android                - Android platform specific files
-├── assets                 - Images and fonts
-├── ios                    - iOS platform specific files
-├── lib                    - Core application code
-    ├── controllers       - Business logic
-    ├── core             - Constants and utilities
-    ├── models           - Data models
-    ├── presentation     - UI screens and widgets
-    ├── routes          - Navigation routes
-    ├── theme           - App theming
-    └── widgets         - Reusable widgets
+├── android/                # Android platform specific files
+├── assets/                # Images and fonts
+├── ios/                   # iOS platform specific files
+└── lib/                   # Core application code
+    ├── controllers/      # Business logic
+    ├── core/            # Constants and utilities
+    ├── models/          # Data models
+    ├── presentation/    # UI screens and widgets
+    ├── routes/          # Navigation routes
+    ├── theme/           # App theming
+    └── widgets/         # Reusable widgets
 
 
 ## Key Libraries
